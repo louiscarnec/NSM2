@@ -9,6 +9,7 @@ Created on Mon Apr 10 13:07:13 2017
 import networkx as nx
 import random
 import matplotlib.pyplot as plt
+import csv
 
 # This is an SI epidemic model. Instead of states S and I, we use
 # integers, in order to keep track not only of whether each person has
@@ -126,6 +127,24 @@ def viz(G):
     plt.show()
 
     
+def real_world_airport_graph(nodes, edges):
+    """ This function creates a graph using a databse of aiports and their associated routes.
+    
+    Airports are represented by nodes and routes by edges.
+    
+    """
+    
+    G = nx.DiGraph
+    
+    with open('airports_data.csv', '') as csvfile: 
+        airports = csv.reader(csvfile, delimeter= ' ',quotechar='|')
+        for row in airports:
+            print(row)
+            
+            
+    return G
+    
     
 if __name__ == "__main__":
     run()
+    nodes = 
