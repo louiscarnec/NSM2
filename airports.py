@@ -10,28 +10,9 @@ import networkx as nx
 import random
 import matplotlib.pyplot as plt
 import csv
+import math
+import scipy
 
-# This is an SI epidemic model. Instead of states S and I, we use
-# integers, in order to keep track not only of whether each person has
-# the disease, but also how long they've had it.
-
-# That is: state = 0 means healthy but susceptible. If a person
-# becomes infected by the disease, they get state = 1 (infectious). At
-# each time-step, this increases (any positive integer is still
-# infectious). At state t, they die, and we give them state = -1 so we
-# know not to consider them in future.
-
-# In the step function, we calculate and save all the nodes' new
-# states before overwriting them. So all the updates happen
-# "simultaneously", that is this is a *synchronous* model. The
-# alternative is *asynchronous*, that is each node gets updated as
-# soon as its new state is known, which can affect the calculation of
-# the new state for a later node within the same time-step. In many
-# cases the difference is not important.
-
-# In this model, we can either get a few people dying off, and the
-# epidemic then disappearing, or we can get a large-scale die-off and
-# only relatively isolated individuals surviving.
 
 
 n = 20 # number of nodes
@@ -134,17 +115,73 @@ def real_world_airport_graph(nodes, edges):
     
     """
     
-    G = nx.DiGraph
+    G = nx.Graph()
     
-    with open('airports_data.csv', '') as csvfile: 
-        airports = csv.reader(csvfile, delimeter= ' ',quotechar='|')
-        for row in airports:
-            print(row)
+    duplicate_count = 0
+    edge_count = 0 
+    error_count = 0
+    line_num = 0 
             
-            
+    nodes = 'airports_data.txt'        
+    with open(nodes, 'r', encoding='utf-8') as f:
+        for line in f.readlines():
+            entries = line.replace('"',"").rstrip().split(",")
+            G.add_node(int(entries[0]),country=entries[3],name=entries[1], IATA = entries[4])
+    
+    edges = 'edges.txt'
+    with open(edges, 'r', encoding="utf-8") as f:
+        for line in f.readlines():
+            entries = line.replace('"',"").rstrip().split(",")
+            try:
+                if G.has_edge(int(entries[3]),int(entries[5])):
+                    duplicate_count += 1
+                else:
+                    if line_num > 1:
+                        vertex1 = int(entries[3])
+                        vertex2 = int(entries[5])
+                        G.add_edge(vertex1, vertex2 )
+                        G.edge[vertex1][vertex2]['IATA'] = entries[2]
+                        G.edge[vertex1][vertex2]['IATA'] = entries[4]
+                        edge_count += 1
+            except ValueError:
+                # The value doesn't exist
+                error_count += 1
+                pass
+            line_num += 1
     return G
     
+def largest_connected_component(G):
+    largest = max(nx.connected_component_subgraphs(G), key=len)
+    return largest
+    
+def nCk(n, k):
+    # n choose k
+    return scipy.misc.comb(n, k)
+    
+def graph_properties(G):
+    n = G.order()
+    m = G.size()
+    d = G.degree()
+    sqrt_n = math.sqrt(n)
+    try:
+        diam = nx.diameter(G)
+    except:
+        diam = math.inf
+    return (
+        n,
+        m,
+        m / nCk(n, 2), # density
+        nx.average_clustering(G),
+        diam,
+        len([u for u in G.nodes() if d[u] > sqrt_n]), # num nodes high degree
+        max(len(c) for c in nx.connected_components(G)) # len(largest comp)
+    )
+
+        
     
 if __name__ == "__main__":
-    run()
-    nodes = 
+#    run()
+    nodes = 'airports_data.txt'
+    edges = 'edges.csv.txt'
+    G = real_world_airport_graph(nodes, edges)
+    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp = graph_properties(G)

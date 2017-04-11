@@ -11,14 +11,13 @@ import random
 import matplotlib.pyplot as plt
 import csv
 
-#with open('airports_data.csv', newline='') as csvfile: 
-#        airports = csv.reader(csvfile)
-#        for row in airports:
-#            print(row)
 
-nodes = open('/Users/Carnec/Documents/NSM2/airports_data.txt')
+        
+    
+edges = 'edges.txt'
+with open(edges, 'r', encoding="utf-8") as f:
+    for line in f.readlines():
+        entries = line.replace('"',"").rstrip().split(",")
 
-#with open(nodes, 'r', encoding='utf-8') as f:
-#
-#    for line in f.readlines():
-#        entries = line.replace('"',"").rstrip().split(",")
+
+    
