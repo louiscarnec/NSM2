@@ -122,35 +122,39 @@ def real_world_airport_graph(nodes, edges):
     error_count = 0
     line_num = 0 
 
-    airportdata = 'sub_us_airports.csv'        
+    USairports = set()  
+    
     with open(airportdata, 'r') as f:
-         csvreader = csv.reader(f)
-         for row in csvreader:
-             G.add_node(int(row[0]),country=row[3],name=row[1], IATA = row[4], population= int(row[11]))
-             
-    edges = 'edges.txt'
+        csvreader = csv.reader(f)
+        for row in csvreader:
+            if row[4] != '':
+                if row[4] not in USairports:
+                    USairports.add(row[4])
+                G.add_node(int(row[0]),country=row[3],name=row[1], IATA = row[4], population= int(row[11]))
+    
     with open(edges, 'r', encoding="utf-8") as f:
         for line in f.readlines():
             entries = line.replace('"',"").rstrip().split(",")
-            try:
-                if G.has_edge(int(entries[3]),int(entries[5])):
-                    duplicate_count += 1
-                else:
-                    if line_num > 1:
-                        vertex1 = int(entries[3])
-                        vertex2 = int(entries[5])
-                        G.add_edge(vertex1, vertex2 )
-                        G.edge[vertex1][vertex2]['IATA'] = entries[2]
-                        G.edge[vertex1][vertex2]['IATA'] = entries[4]
-                        edge_count += 1
-            except ValueError:
-                # The value doesn't exist
-                error_count += 1
-                pass
-            line_num += 1
+            if entries[2] and entries[4] in USairports:
+                try:
+                    if G.has_edge(int(entries[3]),int(entries[5])):
+                        duplicate_count += 1
+                    else:
+                        if line_num > 1:
+                            vertex1 = int(entries[3])
+                            vertex2 = int(entries[5])
+                            G.add_edge(vertex1, vertex2 )
+                            G.edge[vertex1][vertex2]['IATA'] = entries[2]
+                            G.edge[vertex1][vertex2]['IATA'] = entries[4]
+                            edge_count += 1
+                except ValueError:
+                    # The value doesn't exist
+                    error_count += 1
+                    pass
+                line_num += 1
     return G
     
-def stratify():
+
     
     
 def largest_connected_component(G):
@@ -184,7 +188,7 @@ def graph_properties(G):
     
 if __name__ == "__main__":
     run()
-    nodes = 'airports_data.txt'
-    edges = 'edges.csv.txt'
+    nodes = 'sub_us_airports.csv' 
+    edges = 'edges.txt'
     G = real_world_airport_graph(nodes, edges)
     order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp = graph_properties(G)
