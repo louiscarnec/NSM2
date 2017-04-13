@@ -1,0 +1,357 @@
+6877,North Las Vegas Airport,Las Vegas,United States,VGT,\N,36.2106944,-115.1944444,2205,-7,U,623747
+6873,Purude University Airport,Lafayette,United States,LAF,\N,40.4123056,-86.9368889,606,-5,A,127657
+3416,Executive,Orlando,United States,ORL,KORL,28.545464,-81.332936,113,-5,A,270934
+3434,Sacramento Mather,Sacramento,United States,MHR,KMHR,38.553897,-121.297592,96,-8,A,490712
+3438,Merrill Fld,Anchorage,United States,MRI,PAMR,61.213544,-149.844447,137,-9,A,298695
+3448,General Edward Lawrence Logan Intl,Boston,United States,BOS,KBOS,42.364347,-71.005181,19,-5,A,667137
+3449,Travis Afb,Fairfield,United States,SUU,KSUU,38.262692,-121.927464,62,-8,A,112970
+3452,Mobile Downtown,Mobile,United States,BFM,KBFM,30.626783,-88.068092,26,-6,A,194288
+3453,Metropolitan Oakland Intl,Oakland,United States,OAK,KOAK,37.721278,-122.220722,9,-8,A,419267
+3454,Eppley Afld,Omaha,United States,OMA,KOMA,41.303167,-95.894069,984,-6,A,443885
+3457,Wichita Mid Continent,Wichita,United States,ICT,KICT,37.649944,-97.433056,1333,-6,A,389965
+3458,Kansas City Intl,Kansas City,United States,MCI,KMCI,39.297606,-94.713905,1026,-6,A,475378
+3459,Dane Co Rgnl Truax Fld,Madison,United States,MSN,KMSN,43.139858,-89.337514,887,-6,A,248951
+3462,Phoenix Sky Harbor Intl,Phoenix,United States,PHX,KPHX,33.434278,-112.011583,1135,-7,N,1563025
+3464,Fort Lauderdale Executive,Fort Lauderdale,United States,FXE,KFXE,26.197281,-80.170706,13,-5,A,178590
+3467,Spokane Intl,Spokane,United States,GEG,KGEG,47.619861,-117.533833,2376,-8,A,213272
+3468,North Perry,Hollywood,United States,HWO,KHWO,26.001222,-80.240722,8,-5,A,149728
+3469,San Francisco Intl,San Francisco,United States,SFO,KSFO,37.618972,-122.374889,13,-8,A,864816
+3472,Gainesville Rgnl,Gainesville,United States,GNV,KGNV,29.690056,-82.271778,152,-5,A,130128
+3473,Memphis Intl,Memphis,United States,MEM,KMEM,35.042417,-89.976667,341,-6,A,655770
+3476,Tstc Waco,Waco,United States,CNW,KCNW,31.637831,-97.074139,470,-6,A,132356
+3479,Little Rock Afb,Jacksonville,United States,LRF,KLRF,34.916944,-92.149722,311,-6,A,868031
+3484,Los Angeles Intl,Los Angeles,United States,LAX,KLAX,33.942536,-118.408075,126,-8,A,3971883
+3486,Cleveland Hopkins Intl,Cleveland,United States,CLE,KCLE,41.411689,-81.849794,791,-5,A,388072
+3488,Cincinnati Northern Kentucky Intl,Cincinnati,United States,CVG,KCVG,39.048836,-84.667822,896,-5,A,298550
+3493,Lafayette Rgnl,Lafayette,United States,LFT,KLFT,30.205278,-91.987611,43,-6,A,127657
+3494,Newark Liberty Intl,Newark,United States,EWR,KEWR,40.6925,-74.168667,18,-5,A,281944
+3500,Maxwell Afb,Montgomery,United States,MXF,KMXF,32.382944,-86.365778,171,-6,A,200602
+3502,Dallas Love Fld,Dallas,United States,DAL,KDAL,32.847111,-96.851778,487,-6,A,1300092
+3505,Miramar Mcas,Miramar,United States,NKX,KNKX,32.867694,-117.14175,478,-8,A,137132
+3506,Luke Afb,Phoenix,United States,LUF,KLUF,33.535,-112.38306,1085,-7,A,1563025
+3525,Tinker Afb,Oklahoma City,United States,TIK,KTIK,35.414739,-97.386633,1291,-6,A,631346
+3527,Pueblo Memorial,Pueblo,United States,PUB,KPUB,38.289085,-104.496572,4726,-7,A,109412
+3533,Fort Lauderdale Hollywood Intl,Fort Lauderdale,United States,FLL,KFLL,26.072583,-80.15275,9,-5,A,178590
+3536,Salt Lake City Intl,Salt Lake City,United States,SLC,KSLC,40.788389,-111.977772,4227,-7,A,192672
+3543,Lincoln,Lincoln,United States,LNK,KLNK,40.850971,-96.75925,1219,-6,A,277348
+3544,Capital City,Lansing,United States,LAN,KLAN,42.7787,-84.587357,861,-5,A,115056
+3548,Albert Whitted,St. Petersburg,United States,SPG,KSPG,27.765111,-82.626972,7,-5,A,257083
+3550,George Bush Intercontinental,Houston,United States,IAH,KIAH,29.984433,-95.341442,97,-6,A,2296224
+3558,Meadows Fld,Bakersfield,United States,BFL,KBFL,35.433598,-119.05677,507,-8,A,373640
+3559,El Paso Intl,El Paso,United States,ELP,KELP,31.80725,-106.377583,3958,-7,A,681124
+3561,Columbia Metropolitan,Columbia,United States,CAE,KCAE,33.938833,-81.119528,236,-5,A,133803
+3562,Davis Monthan Afb,Tucson,United States,DMA,KDMA,32.166467,-110.883144,2704,-7,A,531641
+3566,William P Hobby,Houston,United States,HOU,KHOU,29.645419,-95.278889,46,-6,A,2296224
+3570,Pittsburgh Intl,Pittsburgh,United States,PIT,KPIT,40.491467,-80.232872,1204,-5,A,304391
+3572,Ellington Fld,Houston,United States,EFD,KEFD,29.607333,-95.15875,32,-6,A,2296224
+3576,Miami Intl,Miami,United States,MIA,KMIA,25.79325,-80.290556,8,-5,A,441003
+3577,Seattle Tacoma Intl,Seattle,United States,SEA,KSEA,47.449,-122.309306,433,-8,A,684451
+3578,Lovell Fld,Chattanooga,United States,CHA,KCHA,35.035278,-85.203808,683,-5,A,176588
+3580,Jackson Evers Intl,Jackson,United States,JAN,KJAN,32.311167,-90.075889,346,-6,A,170674
+3582,Long Beach,Long Beach,United States,LGB,KLGB,33.817722,-118.151611,60,-8,A,474140
+3585,Indianapolis Intl,Indianapolis,United States,IND,KIND,39.717331,-86.294383,797,-5,A,853173
+3587,Akron Fulton Intl,Akron,United States,AKC,KAKR,41.0375,-81.466917,1067,-5,A,197542
+3593,Palm Beach Co Park,West Palm Beach,United States,LNA,KLNA,26.593,-80.085056,14,-5,A,106779
+3594,North Island Nas,San Diego,United States,NZY,KNZY,32.699219,-117.21531,26,-8,A,1394928
+3595,Biggs Aaf,El Paso,United States,BIF,KBIF,31.849528,-106.380039,3948,-7,A,681124
+3597,Cavern City Air Terminal,Carlsbad,United States,CNM,KCNM,32.337472,-104.263278,3295,-7,A,113453
+3600,Bowman Fld,Louisville,United States,LOU,KLOU,38.228,-85.663722,546,-5,A,615366
+3608,Richmond Intl,Richmond,United States,RIC,KRIC,37.505167,-77.319667,167,-5,A,220289
+3609,Shreveport Rgnl,Shreveport,United States,SHV,KSHV,32.446629,-93.8256,258,-6,A,197204
+3611,Norfolk Intl,Norfolk,United States,ORF,KORF,36.894611,-76.201222,26,-5,A,246393
+3612,Southeast Texas Rgnl,Beaumont,United States,BPT,KBPT,29.950833,-94.020694,15,-6,A,118129
+3613,Savannah Hilton Head Intl,Savannah,United States,SAV,KSAV,32.127583,-81.202139,51,-5,A,145674
+3617,St Petersburg Clearwater Intl,St. Petersburg,United States,PIE,KPIE,27.910167,-82.687389,10,-5,A,257083
+3621,San Antonio Intl,San Antonio,United States,SAT,KSAT,29.533694,-98.469778,809,-6,A,1469845
+3622,Greater Rochester Intl,Rochester,United States,ROC,KROC,43.118866,-77.672389,559,-5,A,209802
+3627,James M Cox Dayton Intl,Dayton,United States,DAY,KDAY,39.902375,-84.219375,1009,-5,A,140599
+3633,Newport News Williamsburg Intl,Newport News,United States,PHF,KPHF,37.131894,-76.492989,43,-5,A,182385
+3634,Esler Rgnl,Alexandria,United States,ESF,KESF,31.394903,-92.295772,112,-6,A,153511
+3636,Tucson Intl,Tucson,United States,TUS,KTUS,32.116083,-110.941028,2643,-7,N,531641
+3641,Theodore Francis Green State,Providence,United States,PVD,KPVD,41.732581,-71.420383,55,-5,A,179207
+3644,Bob Hope,Burbank,United States,BUR,KBUR,34.200667,-118.358667,778,-8,A,105319
+3645,Detroit Metro Wayne Co,Detroit,United States,DTW,KDTW,42.212444,-83.353389,645,-5,A,677116
+3646,Tampa Intl,Tampa,United States,TPA,KTPA,27.975472,-82.53325,26,-5,A,369075
+3653,Austin Straubel Intl,Green Bay,United States,GRB,KGRB,44.485072,-88.129589,695,-6,A,105207
+3660,Adams Fld,Little Rock,United States,LIT,KLIT,34.729444,-92.224306,262,-6,A,197992
+3663,Sacramento Executive,Sacramento,United States,SAC,KSAC,38.512524,-121.49347,24,-8,A,490712
+3667,Fairchild Afb,Spokane,United States,SKA,KSKA,47.615058,-117.655772,2461,-8,A,213272
+3672,Mc Chord Afb,Tacoma,United States,TCM,KTCM,47.137678,-122.476475,322,-8,A,207948
+3673,Austin Bergstrom Intl,Austin,United States,AUS,KAUS,30.194528,-97.669889,542,-6,A,931830
+3674,Rickenbacker Intl,Columbus,United States,LCK,KLCK,39.813786,-82.927822,744,-5,A,850106
+3676,Mc Ghee Tyson,Knoxville,United States,TYS,KTYS,35.810972,-83.994028,981,-5,A,185291
+3678,Lambert St Louis Intl,St. Louis,United States,STL,KSTL,38.748697,-90.370028,618,-6,A,315685
+3680,Sheppard Afb Wichita Falls Muni,Wichita Falls,United States,SPS,KSPS,33.988797,-98.491894,1019,-6,A,104710
+3681,Cincinnati Muni Lunken Fld,Cincinnati,United States,LUK,KLUK,39.103333,-84.418611,483,-5,A,298550
+3682,Hartsfield Jackson Atlanta Intl,Atlanta,United States,ATL,KATL,33.636719,-84.428067,1026,-5,A,463878
+3684,Mc Clellan Afld,Sacramento,United States,MCC,KMCC,38.667639,-121.400611,75,-8,A,490712
+3685,Gerald R Ford Intl,Grand Rapids,United States,GRR,KGRR,42.880833,-85.522806,794,-5,A,195097
+3687,Fresno Yosemite Intl,Fresno,United States,FAT,KFAT,36.776194,-119.71814,336,-8,A,520052
+3691,Laredo Intl,Laredo,United States,LRD,KLRD,27.54375,-99.461556,508,-6,A,255473
+3692,Elmendorf Afb,Anchorage,United States,EDF,PAED,61.250986,-149.806503,212,-9,A,298695
+3695,Dyess Afb,Abilene,United States,DYS,KDYS,32.420756,-99.8546,1789,-6,A,121721
+3697,La Guardia,New York,United States,LGA,KLGA,40.777245,-73.872608,22,-5,A,8550405
+3698,Tallahassee Rgnl,Tallahassee,United States,TLH,KTLH,30.396528,-84.350333,81,-5,A,189907
+3700,Waco Rgnl,Waco,United States,ACT,KACT,31.611289,-97.230519,516,-6,A,132356
+3701,Augusta State,Augusta,United States,AUG,KAUG,44.320647,-69.797317,352,-5,A,197182
+3702,Hillsboro Muni,Hillsboro,United States,INJ,KINJ,32.083486,-97.097228,685,-6,A,102347
+3703,Jacksonville Nas,Jacksonville,United States,NIP,KNIP,30.235834,-81.680556,22,-5,A,868031
+3704,Mc Kellar Sipes Rgnl,Jackson,United States,MKL,KMKL,35.599889,-88.915611,434,-6,A,170674
+3707,New River Mcas,Jacksonville,United States,,KNCA,34.708417,-77.439667,26,-5,A,868031
+3708,San Angelo Rgnl Mathis Fld,San Angelo,United States,SJT,KSJT,31.35775,-100.496306,1919,-6,A,100450
+3712,Jacksonville Intl,Jacksonville,United States,JAX,KJAX,30.494056,-81.687861,30,-5,A,868031
+3715,Easterwood Fld,College Station,United States,CLL,KCLL,30.588583,-96.363833,321,-6,A,107889
+3716,Felts Fld,Spokane,United States,SFF,KSFF,47.682819,-117.322558,1953,-8,A,213272
+3717,General Mitchell Intl,Milwaukee,United States,MKE,KMKE,42.947222,-87.896583,723,-6,A,600155
+3718,Abilene Rgnl,Abilene,United States,ABI,KABI,32.411319,-99.681897,1791,-6,A,121721
+3719,Columbia Rgnl,Columbia,United States,COU,KCOU,38.818094,-92.219631,889,-6,A,133803
+3720,Portland Intl,Portland,United States,PDX,KPDX,45.588722,-122.5975,30,-8,A,632309
+3721,Dade Collier Training And Transition,Miami,United States,TNT,KTNT,25.861806,-80.897,13,-5,A,441003
+3722,Palm Beach Intl,West Palm Beach,United States,PBI,KPBI,26.683161,-80.095589,19,-5,A,106779
+3723,Fort Worth Meacham Intl,Fort Worth,United States,FTW,KFTW,32.819778,-97.362444,710,-6,A,833319
+3726,Boeing Fld King Co Intl,Seattle,United States,BFI,KBFI,47.53,-122.301947,21,-8,A,684451
+3727,Lackland Afb Kelly Fld Annex,San Antonio,United States,SKF,KSKF,29.384228,-98.581108,691,-6,A,1469845
+3729,Des Moines Intl,Des Moines,United States,DSM,KDSM,41.533972,-93.663083,958,-6,A,210330
+3731,San Diego Intl,San Diego,United States,SAN,KSAN,32.733556,-117.189667,17,-8,A,1394928
+3734,Ontario Intl,Ontario,United States,ONT,KONT,34.056,-117.601194,944,-8,A,171214
+3737,Coleman A Young Muni,Detroit,United States,DET,KDET,42.409195,-83.009861,626,-5,A,677116
+3738,Brownsville South Padre Island Intl,Brownsville,United States,BRO,KBRO,25.906833,-97.425861,22,-6,A,183887
+3744,Corpus Christi Intl,Corpus Christi,United States,CRP,KCRP,27.770361,-97.501222,44,-6,A,324074
+3745,Syracuse Hancock Intl,Syracuse,United States,SYR,KSYR,43.111187,-76.106311,421,-5,A,144142
+3747,Chicago Midway Intl,Chicago,United States,MDW,KMDW,41.785972,-87.752417,620,-6,A,2720546
+3748,Norman Y Mineta San Jose Intl,San Jose,United States,SJC,KSJC,37.3626,-121.929022,62,-8,A,1026908
+3750,Northeast Philadelphia,Philadelphia,United States,PNE,KPNE,40.081944,-75.010586,121,-5,A,1567442
+3751,Denver Intl,Denver,United States,DEN,KDEN,39.861656,-104.673178,5431,-7,A,682545
+3752,Philadelphia Intl,Philadelphia,United States,PHL,KPHL,39.871944,-75.241139,36,-5,A,1567442
+3756,Palmdale Rgnl Usaf Plt 42,Palmdale,United States,PMD,KPMD,34.629391,-118.08456,2543,-8,A,158351
+3757,Randolph Afb,San Antonio,United States,RND,KRND,29.529675,-98.2789,762,-6,A,1469845
+3759,Port Columbus Intl,Columbus,United States,CMH,KCMH,39.997972,-82.891889,815,-5,A,850106
+3760,Drake Fld,Fayetteville,United States,FYV,KFYV,36.005094,-94.170059,1251,-6,A,201963
+3763,Wright Patterson Afb,Dayton,United States,FFO,KFFO,39.826111,-84.048332,823,-5,A,140599
+3765,Chandler Muni,Chandler,United States,,KCHD,33.269111,-111.811111,1243,-7,A,260828
+3767,Mc Connell Afb,Wichita,United States,IAB,KIAB,37.621853,-97.268192,1371,-6,A,389965
+3768,New Orleans Nas Jrb,New Orleans,United States,NBG,KNBG,29.825333,-90.035,3,-6,A,389617
+3774,Ted Stevens Anchorage Intl,Anchorage,United States,ANC,PANC,61.174361,-149.996361,152,-9,A,298695
+3775,Robert Gray Aaf,Killeen,United States,GRK,KGRK,31.06725,-97.828917,1015,-6,A,140806
+3780,Hartford Brainard,Hartford,United States,HFD,KHFD,41.736722,-72.649444,18,-5,A,124006
+3782,Mobile Rgnl,Mobile,United States,MOB,KMOB,30.691231,-88.242814,219,-6,A,194288
+3789,Macdill Afb,Tampa,United States,MCF,KMCF,27.849339,-82.521214,14,-5,A,369075
+3791,Opa Locka,Miami,United States,OPF,KOPF,25.907,-80.278389,8,-5,A,441003
+3797,John F Kennedy Intl,New York,United States,JFK,KJFK,40.639751,-73.778925,13,-5,A,8550405
+3799,Riverside Muni,Riverside,United States,RAL,KRAL,33.951875,-117.445103,818,-8,A,322424
+3805,Stockton Metropolitan,Stockton,United States,SCK,KSCK,37.894167,-121.238306,33,-8,A,305658
+3806,Charleston Afb Intl,Charleston,United States,CHS,KCHS,32.898647,-80.040528,45,-5,A,132609
+3807,Reno Tahoe Intl,Reno,United States,RNO,KRNO,39.499108,-119.768108,4415,-8,A,241445
+3809,Willow Run,Detroit,United States,YIP,KYIP,42.237928,-83.530408,716,-5,A,677116
+3811,Birmingham Intl,Birmingham,United States,BHM,KBHM,33.562942,-86.75355,644,-6,A,212461
+3814,Nellis Afb,Las Vegas,United States,LSV,KLSV,36.236197,-115.034253,1870,-8,A,623747
+3815,March Arb,Riverside,United States,RIV,KRIV,33.880711,-117.259453,1535,-8,A,322424
+3816,Modesto City Co Harry Sham,Modesto,United States,MOD,KMOD,37.625817,-120.954422,97,-8,A,211266
+3817,Sacramento Intl,Sacramento,United States,SMF,KSMF,38.695417,-121.590778,27,-8,A,490712
+3818,Waukegan Rgnl,Chicago,United States,UGN,KUGN,42.422161,-87.867908,727,-6,A,2720546
+3819,City Of Colorado Springs Muni,Colorado Springs,United States,COS,KCOS,38.805805,-104.700778,6187,-7,A,456568
+3820,Buffalo Niagara Intl,Buffalo,United States,BUF,KBUF,42.940525,-78.732167,724,-5,A,258071
+3822,Snohomish Co,Everett,United States,PAE,KPAE,47.906342,-122.281564,606,-8,A,108010
+3827,Norfolk Ns,Norfolk,United States,NGU,KNGU,36.937644,-76.289289,15,-5,A,246393
+3829,Lubbock Preston Smith Intl,Lubbock,United States,LBB,KLBB,33.663639,-101.822778,3282,-6,A,249042
+3830,Chicago Ohare Intl,Chicago,United States,ORD,KORD,41.978603,-87.904842,668,-6,A,2720546
+3834,Cannon Afb,Clovis,United States,CVS,KCVS,34.382775,-103.322147,4295,-7,A,104180
+3836,Offutt Afb,Omaha,United States,OFF,KOFF,41.118332,-95.912511,1052,-6,A,443885
+3840,Rick Husband Amarillo Intl,Amarillo,United States,AMA,KAMA,35.219369,-101.705931,3607,-6,A,198645
+3842,Barksdale Afb,Shreveport,United States,BAD,KBAD,32.50182,-93.662674,166,-6,A,197204
+3843,Forbes Fld,Topeka,United States,FOE,KFOE,38.950944,-95.663611,1078,-6,A,127265
+3845,Wilmington Intl,Wilmington,United States,ILM,KILM,34.270615,-77.902569,32,-5,A,115933
+3846,Baton Rouge Metro Ryan Fld,Baton Rouge,United States,BTR,KBTR,30.533167,-91.149639,70,-6,A,228590
+3848,Tyler Pounds Rgnl,Tyler,United States,TYR,KTYR,32.354139,-95.402386,544,-6,A,103700
+3849,Baltimore Washington Intl,Baltimore,United States,BWI,KBWI,39.175361,-76.668333,146,-5,A,621849
+3852,Alexandria Intl,Alexandria,United States,AEX,KAEX,31.3274,-92.549833,89,-6,A,153511
+3855,Tulsa Intl,Tulsa,United States,TUL,KTUL,36.198389,-95.888111,677,-6,A,403505
+3858,Minneapolis St Paul Intl,Minneapolis,United States,MSP,KMSP,44.881956,-93.221767,841,-6,A,410939
+3859,New Castle,Wilmington,United States,ILG,KILG,39.678722,-75.606528,79,-5,A,115933
+3861,Louis Armstrong New Orleans Intl,New Orleans,United States,MSY,KMSY,29.993389,-90.258028,4,-6,A,389617
+3862,Portland Intl Jetport,Portland,United States,PWM,KPWM,43.646161,-70.309281,77,-5,A,632309
+3863,Will Rogers World,Oklahoma City,United States,OKC,KOKC,35.393089,-97.600733,1295,-6,A,631346
+3866,Langley Afb,Hampton,United States,LFI,KLFI,37.082881,-76.360547,11,-5,A,136454
+3867,John Wayne Arpt Orange Co,Santa Ana,United States,SNA,KSNA,33.675667,-117.868222,56,-8,A,335400
+3876,Charlotte Douglas Intl,Charlotte,United States,CLT,KCLT,35.214,-80.943139,748,-5,A,827097
+3877,Mc Carran Intl,Las Vegas,United States,LAS,KLAS,36.080056,-115.15225,2141,-8,A,623747
+3878,Orlando Intl,Orlando,United States,MCO,KMCO,28.429394,-81.308994,96,-5,A,270934
+3993,Wall Street Heliport,New York,United States,JRB,KJRB,40.701214,-74.009028,7,-5,A,8550405
+4006,Tweed-New Haven Airport,New Haven,United States,HVN,KHVN,41.26375,-72.886806,14,-5,A,130322
+4008,Piedmont Triad,Greensboro,United States,GSO,KGSO,36.09775,-79.937306,925,-5,A,285342
+4009,Sioux Falls,Sioux Falls,United States,FSD,KFSD,43.582014,-96.741914,1429,-6,A,171544
+4014,Louisville International Airport,Louisville,United States,SDF,KSDF,38.1740858,-85.7364989,501,-5,A,615366
+4018,Evansville Regional,Evansville,United States,EVV,KEVV,38.036997,-87.532364,418,-6,A,119943
+4019,Albuquerque International Sunport,Albuquerque,United States,ABQ,KABQ,35.0402222,-106.6091944,5355,-7,A,559121
+4021,Billings Logan International Airport,Billings,United States,BIL,KBIL,45.80921,-108.537654,3652,-7,A,110263
+4028,Chicago Rockford International Airport ,Rockford,United States,RFD,KRFD,42.1953611,-89.0972222,742,-6,A,148278
+4032,East 34th Street Heliport,New York,United States,TSS,NONE,40.7425,-73.971944,10,-5,A,8550405
+4040,Toledo,Toledo,United States,TOL,KTOL,41.586806,-83.807833,684,-5,A,279789
+4041,Fort Wayne,Fort Wayne,United States,FWA,KFWA,40.978472,-85.195139,815,-5,A,260326
+4043,Cedar Rapids,Cedar Rapids,United States,CID,KCID,41.884694,-91.710806,869,-6,A,130405
+4046,Peoria Regional,Peoria,United States,PIA,KPIA,40.664203,-89.693258,660,-6,A,115070
+4048,Rochester,Rochester,United States,RST,KRST,43.908283,-92.500014,1317,-6,A,209802
+4065,David Wayne Hooks Field,Houston,United States,DWH,KDWH,30.063746,-95.554276,152,-6,A,2296224
+4079,Orlando,Orlando,United States,DWS,\N,28.398,-81.57,340,-5,A,270934
+4088,McClellan-Palomar Airport,Carlsbad,United States,CLD,KCRQ,33.0742,-117.1648,328,-8,A,113453
+4099,Mahlon Sweet Fld,Eugene,United States,EUG,KEUG,44.124583,-123.211972,374,-8,A,163460
+4112,Akron Canton Regional Airport,Akron,United States,CAK,KCAK,40.9160833,-81.4421944,1228,-5,A,197542
+4113,Huntsville International Airport-Carl T Jones Field,Huntsville,United States,HSV,KHSV,34.6371944,-86.7750556,629,-6,A,190582
+4222,Centennial,Denver,United States,APA,KAPA,39.570129,-104.849294,5883,-7,A,682545
+4223,Clovis Muni,Clovis,United States,CVN,KCVN,34.425139,-103.079278,4216,-6,A,104180
+4225,Las Vegas Muni,Las Vegas,United States,LVS,KLVS,35.654222,-105.142389,6877,-7,A,623747
+4226,West Houston,Houston,United States,IWS,KIWS,29.818194,-95.672611,111,-6,A,2296224
+4228,Las Cruces Intl,Las Cruces,United States,LRU,KLRU,32.289417,-106.921972,4456,-7,A,101643
+4251,Stapleton,Denver,United States,,\N,39.779255,-104.88184,5333,-7,A,682545
+4255,Columbus Metropolitan Airport,Columbus,United States,CSG,KCSG,32.5163333,-84.9388611,397,-5,A,850106
+4257,Fort Collins Loveland Muni,Fort Collins,United States,FNL,KFNL,40.451828,-105.011336,5016,-7,A,161175
+4285,Yeager,Charleston,United States,CRW,KCRW,38.373147,-81.593189,981,-5,A,132609
+4292,Hector International Airport,Fargo,United States,FAR,KFAR,46.92065,-96.8157639,902,-6,A,118523
+4293,Downtown,Kansas City,United States,MKC,KMKC,39.1275,-94.598889,759,-6,A,475378
+6505,Phoenix-Mesa Gateway,Mesa,United States,AZA,KIWA,33.307833,-111.655,1382,-7,N,471825
+4298,El Toro,Santa Ana,United States,NZJ,KNZJ,33.676132,-117.731164,383,-8,A,335400
+4336,Abraham Lincoln Capital,Springfield,United States,SPI,KSPI,39.8441,-89.677889,597,-6,A,166810
+4348,Springfield Branson Natl,Springfield,United States,SGF,KSGF,37.245667,-93.388639,1268,-6,A,166810
+4355,Lehigh Valley Intl,Allentown,United States,ABE,KABE,40.652083,-75.440806,393,-5,A,120207
+4359,South Bend Rgnl,South Bend,United States,SBN,KSBN,41.708661,-86.31725,799,-5,A,101516
+5772,Santa Maria Pub Cpt G Allan Hancock Airport,Santa Maria,United States,SMX,KSMX,34.8989,-120.457,261,-8,A,105093
+5751,Lancaster Airport,Lancaster,United States,LNS,KLNS,40.1217,-76.2961,403,-5,A,161103
+5738,Fayetteville Regional Grannis Field,Fayetteville,United States,FAY,KFAY,34.9912,-78.8803,189,-5,A,201963
+5716,Athens Ben Epps Airport,Athens,United States,AHN,KAHN,33.9486,-83.3263,808,-5,A,122604
+6507,Fremont Airport,Fremont,United States,,\N,41.3331,-83.1612,663,-5,A,232206
+6426,Worcester Regional Airport,Worcester,United States,ORH,KORH,42.2673,-71.8757,1009,-5,A,184815
+6441,New Haven Rail Station,New Haven,United States,ZVE,\N,41.298669,-72.925992,7,-5,A,130322
+6442,Chicago Union Station,Chicago,United States,,\N,41.8791966,-87.6388507,581,-6,A,2720546
+6452,Baltimore Penn Station,Baltimore,United States,,\N,39.307408,-76.615552,62,-5,A,621849
+6457,Kenmore Air Harbor Seaplane Base,Seattle,United States,LKE,KW55,47.629,-122.339,14,-7,A,684451
+6481,Fullerton Municipal Airport,Fullerton,United States,FUL,KFUL,33.521925,-117.584722,96,-7,A,140847
+6482,Concord Rgnl,Concord,United States,,KJQF,35.387775,-80.709136,705,-5,A,128667
+6948,Fort Worth NAS,Dallas,United States,,KNFW,32.769167,-97.441528,650,-6,A,1300092
+6961,Oxnard - Ventura County,Oxnard,United States,OXR,KOXR,34.200833,-119.207222,15,-8,A,207254
+6965,Penn Station,Baltimore,United States,ZBP,\N,39.307222,-76.615556,66,-5,A,621849
+6966,Penn Station,New York,United States,ZYP,\N,40.7505,-73.9935,35,-5,A,8550405
+6992,Charles M Schulz Sonoma Co,Santa Rosa,United States,STS,KSTS,38.508978,-122.81288,125,-8,A,174972
+7006,Philadelphia 30th St Station,Philadelphia,United States,ZFV,\N,39.9557,-75.182,0,-5,A,1567442
+7023,Corpus Christi NAS,Corpus Christi,United States,NGP,KNGP,27.692701,-97.290376,18,-6,A,324074
+7040,Wrigleyville,Chicago,United States,,\N,41.94895807,-87.6587534,500,-7,U,2720546
+7043,Hartford Union Station,Hartford,United States,ZRT,\N,41.76888,-72.6815,0,-5,A,124006
+7044,Stamford Amtrak Station,Stamford,United States,ZTF,\N,41.046937,-73.541493,0,-5,A,128874
+7045,Newark Penn Station,Newark,United States,ZRP,\N,40.734722,-74.164167,0,-5,A,281944
+7053,Zamperini Field Airport,Torrance,United States,TOA,KTOA,33.803392,-118.339611,101,-8,A,148475
+7121,Visalia Municipal Airport,Visalia,United States,VIS,KVIS,36.318611,-119.392778,295,-8,A,130104
+7318,Lancaster Amtrak Station,Lancaster,United States,,\N,40.05,-76.31,345,-5,A,161103
+7344,Newport News Amtrak Station,Newport News,United States,,\N,37.0228,-76.4519,0,-5,A,182385
+7345,Portland Union Station,Portland,United States,,\N,45.529,-122.6768,0,0,A,632309
+7385,North Philadelphia Amtrak Station,Philadelphia,United States,,\N,39.9969556,-75.1487722,1,-5,A,1567442
+7401,Seattle Cruise Terminal,Seattle,United States,,\N,47.615884,-122.330017,0,0,A,684451
+7495,Allegheny County Airport,Pittsburgh,United States,AGC,KAGC,40.3544,-79.9302,1252,-5,A,304391
+7496,Cecil Field,Jacksonville,United States,NZC,KVQQ,30.2187,-81.8767,81,-5,A,868031
+7497,Fulton County Airport Brown Field,Atlanta,United States,FTY,KFTY,33.7791,-84.5214,841,-5,A,463878
+7511,Ohio State University Airport,Columbus,United States,OSU,KOSU,40.0798,-83.073,905,-5,U,850106
+7579,Provo Municipal Airport,Provo,United States,PVU,KPVU,40.21805555,-111.7222222,4497,-6,A,115264
+7649,Scottsdale Airport,Scottsdale,United States,ZSY,KSDL,33.6228889,-111.9105278,1519,-7,A,236839
+7654,Dekalb-Peachtree Airport,Atlanta,United States,PDK,KPDK,33.8756111,-84.3019722,1003,-4,A,463878
+7659,Brown Field Municipal Airport,San Diego,United States,SDM,KSDM,32.5722722,-116.9801611,526,-7,A,1394928
+7670,San Bernardino International Airport,San Bernardino,United States,SBD,KSBD,34.0953521,-117.2348722,1159,-8,A,216108
+7693,Gillespie,El Cajon,United States,SEE,KSEE,32.8262222,-116.9724444,388,-8,A,103679
+7705,Detroit Amtrak Station,Detroit,United States,,\N,42.368097,-83.072397,630,-5,A,677116
+7712,Cobb County Airport-Mc Collum Field,Atlanta,United States,RYY,KRYY,34.0131569,-84.5970556,1041,-5,A,463878
+7729,West 30th St. Heliport,New York,United States,JRA,KJRA,40.7545,-74.0071,7,-5,A,8550405
+7732,Lakeland Linder Regional Airport,Lakeland,United States,LAL,KLAL,27.9889167,-82.0185556,142,-5,A,104401
+7748,Fort Lauderdale Cruise Terminal,Fort Lauderdale,United States,,\N,26.0882,-80.115373,0,-5,A,178590
+7750,Miami Cruise Terminal,Miami,United States,,\N,25.779701,-80.177279,0,-5,A,441003
+7755,Los Angeles San Pedro Cruise Terminal,Los Angeles,United States,,\N,33.747198,-118.276856,0,-8,A,3971883
+7767,Idlewild Intl,New York,United States,IDL,KIDL,40.639751,-73.778924,13,-5,A,8550405
+7776,Dayton-Wright Brothers Airport,Dayton,United States,MGY,KMGY,39.5889722,-84.2248611,957,-5,U,140599
+7777,Richmond Municipal Airport,Richmond,United States,RID,KRID,39.7561006,-84.8427175,1140,-5,U,220289
+7826,McNary Field,Salem,United States,SLE,KSLE,44.9095,-123.003,214,-7,A,164549
+7839,Lawrence J Timmerman Airport,Milwaukee,United States,MWC,KMWC,43.1103889,-88.0344167,745,-6,A,600155
+7846,Arlington Municipal,Arlington,United States,GKY,KGKY,32.6638611,-97.0942778,628,-5,A,388125
+7849,Richard Lloyd Jones Jr Airport,Tulsa,United States,RVS,KRVS,36.0396111,-95.9846389,638,-5,A,403505
+7851,Bakersfield Amtrak Station,Bakersfield,United States,,\N,35.372159,-119.008393,408,-8,A,373640
+7869,New Century AirCenter Airport,Olathe,United States,JCI,KIXD,38.8309167,-94.8903056,1087,-6,A,134305
+7881,Port Authority Bus Terminal,New York,United States,,NYPA,40.75616,-73.9906,0,-5,A,8550405
+7888,Buchanan Field Airport,Concord,United States,CCR,KCCR,37.9896667,-122.0568889,26,-8,A,128667
+7890,Denver Union Station,Denver,United States,,\N,39.753187,-105.000093,0,-7,A,682545
+7907,Ohio University Airport,Athens,United States,,KUNI,39.2118928,-82.2292554,766,-5,U,122604
+7908,Springfield-Beckly Municipal Airport,Springfield,United States,SGH,KSGH,39.8402778,-83.8401667,1051,-5,A,166810
+7923,Miami Seaplane Base,Miami,United States,MPB,\N,25.7783,-80.1703,0,-5,A,441003
+7925,Philip Billard Muni,Topeka,United States,TOP,KTOP,39.068657,-95.622482,881,-6,A,127265
+7944,Reno Amtrak Station,Reno,United States,,\N,39.5287,-119.8116,0,-8,A,241445
+7945,Sacramento Amtrak Station,Sacramento,United States,,\N,38.584791,-121.500517,0,-8,A,490712
+7966,Boston South Station,Boston,United States,,BOST,42.35,-71.0558,0,-5,A,667137
+7971,Train Station,Richmond,United States,ZRD,\N,37.5343,-77.42945,26,-5,A,220289
+7978,Wilmington Airborne Airpark,Wilmington,United States,ILN,KILN,39.42792,-83.792118,1077,-5,U,115933
+7979,Marana Regional,Tucson,United States,AVW,KAVQ,32.409556,-111.218388,2031,-7,U,531641
+7981,Mobile,Mobile,United States,,1AZ0,33.111944,-112.269166,1261,-7,U,194288
+7984,McMinn Co,Athens,United States,MMI,KMMI,35.39919,-84.56177,874,-5,N,122604
+7995,Los Angeles Union Station,Los Angeles,United States,,\N,34.056111,-118.234167,300,-8,A,3971883
+7999,Henderson Executive Airport,Henderson,United States,HSH,KHND,35.972778,-115.134444,1881,-8,A,285667
+8008,Savannah Cruise Terminal,Savannah,United States,,\N,32.08558,-81.097559,0,-5,U,145674
+8040,Seattle King Street Station,Seattle,United States,,\N,47.5985,-122.3299,7,-8,A,684451
+8044,Milwaukee Airport Station,Milwaukee,United States,,\N,42.940556,-87.924722,730,-6,A,600155
+8045,Springfield IL Amtrak,Springfield,United States,,\N,39.8023,-89.6515,593,-6,A,166810
+8046,St. Louis Amtrak - old,St. Louis,United States,,\N,38.6241,-90.2056,450,-6,A,315685
+8048,Seattle Pier 52,Seattle,United States,,\N,47.6005,-122.3388,7,-8,A,684451
+8051,Lake Hood Seaplane Base,Anchorage,United States,LHD,PALH,61.1866382,-149.9653918,71,8,A,298695
+8122,Portland Hillsboro,Hillsboro,United States,HIO,KHIO,45.540394,-122.949825,204,-8,A,102347
+8123,One Police Plaza Heliport,New York,United States,,NK39,40.7126,-73.9996,244,-5,A,8550405
+8141,Ontario Municipal Airport,Ontario,United States,,KONO,44.0193611,-117.0130278,2193,-8,A,171214
+8144,Cincinnati Union Terminal,Cincinnati,United States,,\N,39.109961,-84.537074,497,-5,A,298550
+8161,Cleveland Clinic,Cleveland,United States,,CCLN,41.50225,-81.62233,0,-5,A,388072
+8188,Dallas Executive Airport,Dallas,United States,RBD,KRBD,32.680833,-96.868333,201,-6,A,1300092
+8220,Whiteman Airport,Los Angeles,United States,WHP,KWHP,34.2593253,-118.4134331,1003,-8,A,3971883
+8275,Alexandria,Alexandria,United States,ALX,ALX_,38.806346,-77.0621,1,-5,A,153511
+8283,Orange County Airport,Montgomery,United States,MGJ,KMGJ,41.5099884,-74.2646444,364,-4,A,200602
+8296,Knoxville Downtown Island Airport,Knoxville,United States,DKX,KDKX,35.9638333,-83.8736667,833,-4,A,185291
+8300,West Georgia Regional Airport - O V Gray Field,Carrollton,United States,CTJ,KCTJ,33.6316964,-85.1522641,1165,-4,A,133168
+8306,Atlanta Regional Airport - Falcon Field,Atlanta,United States,FFC,KFFC,33.35725,-84.5718333,808,-4,A,463878
+8308,Lee Gilmer Memorial Airport,Gainesville,United States,GVL,KGVL,34.272627,-83.8302233,1276,-4,A,130128
+8318,Daniel Field Airport,Augusta,United States,DNL,KDNL,33.4665028,-82.0393808,423,-5,A,197182
+8339,Tampa Executive Airport,Tampa,United States,VDF,\N,28.0139772,-82.3452778,22,-5,A,369075
+8342,Fort Worth Alliance Airport,Fort Worth,United States,AFW,KAFW,32.987778,-97.318889,722,-6,A,833319
+8345,Montgomery Field,San Diego,United States,MYF,NULL,32.4759,117.759,17,-8,A,1394928
+8379,Pompano Beach Airpark,Pompano Beach,United States,PMP,KPMP,26.2471389,-80.1110556,19,-5,A,107762
+8409,Indianapolis Metropolitan Airport,Indianapolis,United States,UMP,KUMP,39.935278,-86.045,811,-5,A,853173
+8411,Camden Station,Baltimore,United States,,\N,39.2837181,-76.621634,49,-5,A,621849
+8415,Buffalo Bus Terminal,Buffalo,United States,,BBUF,42.883512,-78.87205,0,-5,A,258071
+8418,King St Station,Seattle,United States,,SEAT,47.5985,-122.3299,7,-8,A,684451
+8445,Flabob Airport,Riverside,United States,RIR,KRIR,33.988778,-117.409971,764,-8,A,322424
+8446,Tacoma Narrows Airport,Tacoma,United States,TIW,KTIW,47.267944,-122.57811,294,-8,A,207948
+8447,Tampa North Aero Park,Tampa,United States,X39,\N,28.221278,-82.374555,68,-5,A,369075
+8496,Regional Airport,Joliet,United States,JOT,KJOT,41.517778,-88.175556,582,-6,A,147861
+8499,Reynolds Field,Jackson,United States,JXN,KJXN,42.260556,-84.460556,1001,-5,A,170674
+8504,Wings Field,Philadelphia,United States,BBX,KLOM,40.1375,-75.265,302,-5,A,1567442
+8512,Madison GA Municipal Airport,Madison,United States,52A,K52A,33.612125,-83.4604444,694,-5,A,248951
+8544,Burke Lakefront Airport,Cleveland,United States,BKL,KBKL,41.5175,-81.683333,583,-5,A,388072
+8565,Clearwater Air Park,Clearwater,United States,CLW,KCLW,27.9764722,-82.7586667,70,-5,A,113003
+8566,South Lakeland Airport,Lakeland,United States,X49,\N,27.9333581,-82.0439739,110,-5,A,104401
+8591,All Airports,New York,United States,NYC,\N,40.714167,-74.005833,31,-5,A,8550405
+8592,All Airports,Chicago,United States,CHI,\N,41.883611,-87.631667,596,-6,A,2720546
+8593,Meigs Field,Chicago,United States,CGX,KCGX,41.860278,-87.609722,585,-6,A,2720546
+8606,Lansing Municipal,Lansing,United States,IGQ,KIGQ,41.5349167,-87.5295278,620,-6,A,115056
+8647,Lowell City Airport,Lowell,United States,24C,\N,42.95392,-85.3439058,681,-5,A,110699
+8681,St. Paul Downtown Airport - Holman Field,St. Paul,United States,,KSTP,44.9346225,-93.0603424,705,-6,A,300851
+8705,Kent State Airport,Kent,United States,1G3,\N,41.1513889,-81.4151111,1134,-4,A,126952
+8763,Clarksville-Montgomery County Regional Airport,Clarksville,United States,CKV,KCKV,36.621944,-87.415,550,-5,A,149176
+8793,Hardwick Field Airport,Cleveland,United States,HDI,KHDI,35.2199994,-84.832369,874,-4,A,388072
+8794,Mark Anton Airport,Dayton,United States,2A0,\N,35.48625,-84.9310833,718,-4,A,140599
+8796,Renton,Renton,United States,RNT,KRNT,47.4931389,-122.21575,32,-7,A,100242
+8804,Beech Factory Airport,Wichita,United States,BEC,KBEC,37.6939167,-97.2149167,1409,-5,A,389965
+8834,Madison County Executive Airport,Huntsville,United States,,KMDQ,34.861,-86.558,756,-6,A,190582
+8854,Boulder Municipal,Boulder,United States,WBU,KBDU,40.039444,-105.225833,5288,-7,A,107349
+8869,Mesa Falcon Field,Mesa,United States,FFZ,KFFZ,33.46080017,-111.7279968,1394,-7,A,471825
+8874,Phoenix Regional Airport,Phoenix,United States,A39,KA39,32.99169922,-111.9209976,1300,-7,A,1563025
+8901,Amtrak Station,Tacoma,United States,,\N,47.242733,-122.42041,50,-8,A,207948
+8902,Amtrak Station,Orlando,United States,,\N,28.5259,-81.3813,82,-5,A,270934
+8905,Monroe Reqional Airport,Charlotte,United States,EQY,\N,35.01833,-80.62001,679,-5,A,827097
+8982,Hayward Executive Airport,Hayward,United States,HWD,KHWD,37.65888889,-122.1216667,52,-8,A,158289
+8987,Pittsburgh Amtrak,Pittsburgh,United States,,\N,40.4406,-79.9961,1370,-5,A,304391
+8989,Ann Arbor Municipal Airport,Ann Arbor,United States,ARB,KARB,42.132274,-83.444418,839,-5,A,117070
+9030,Anchorage Rail Depot,Anchorage,United States,,\N,61.1318,-149.5326,102,-9,A,298695
+9049,Boston Back Bay Station,Boston,United States,ZTY,\N,42.3478,-71.075,20,-5,A,667137
+9066,Clayton County Tara Field,Hampton,United States,4A7,K4A7,33.389099,-84.332397,874,-5,A,136454
+9067,Stapleton International Airport,Denver,United States,,DENX,39.779255,-104.88184,5333,-7,A,682545
+9081,Buffalo Exchange Street Station,Buffalo,United States,,\N,42.8783,-78.8738,600,-5,A,258071
+9082,Wilmington Amtrak Station,Wilmington,United States,ZWI,\N,39.736667,-75.551667,0,-5,A,115933
+9093,Salt Lake City Intermodal Hub,Salt Lake City,United States,,SLCR,40.762778,-111.908333,0,-7,A,192672
