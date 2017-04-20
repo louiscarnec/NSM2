@@ -12,19 +12,22 @@ import matplotlib.pyplot as plt
 import csv
 import math
 import scipy
+import numpy as np
+import operator
 
 
 
-def infection_init(G,simulation,init):
+
+def infection_init(G,init):
     """Make a graph with some infected nodes."""
     for u in G.nodes():
         G.node[u]["state"] = 0
         G.node[u]["color"] = 'green'
         
-        G.node[init]["state"] = 1
-        G.node[init]["color"] = 'yellow'
+    G.node[init]["state"] = 1
+    G.node[init]["color"] = 'yellow'
 
-def step(G):
+def step(G,time):
     """Given a graph G, run one time-step."""
     new_state = {}
     for u, d in G.nodes(data=True):
@@ -75,15 +78,19 @@ def normalize_edge_weight(G):
     return G
     
 def run(G,simulation):
+    
     pos=nx.spring_layout(G)
     
     if simulation == "random":    
         init = random.choice(G.nodes())
-    if simulation == "node_deg":
+    elif simulation == "node_deg":
         deg = G.degree()
         init = random.choice([n for n in deg if deg[n] > large_airports])
+    else:
+        init = simulation
+        
 
-    infection_init(G,simulation,init)
+    infection_init(G,init)
     
     print("Source Airport : ", init)
     print("Airport closeness centrality: ", nx.closeness_centrality(G,init))
@@ -93,14 +100,21 @@ def run(G,simulation):
     
     print("TimeStep Susceptible(%), Alive(%), Infected(%),Pdead(%)")
     for i in range(nsteps):
-        step(G)
+        time = i
+        step(G,time)
         psus = sum(G.node[i]["state"] == 0 for i in G.nodes()) / nx.number_of_nodes(G)
         palive = sum(G.node[i]["state"] >= 0 for i in G.nodes()) / nx.number_of_nodes(G)
         pinf = sum(G.node[i]["state"] > 0 for i in G.nodes()) / nx.number_of_nodes(G)
         prec = sum(G.node[i]["color"] > 'blue' for i in G.nodes()) / nx.number_of_nodes(G)
         pdead = sum(G.node[i]["state"] < 0 for i in G.nodes()) / nx.number_of_nodes(G)
         print("Step:%2d, psusceptible: %.2f  , palive: %.2f , pInfected: %.2f , pRecovered: %.2f, pDead: %.2f" % (i,psus, palive, pinf, prec,pdead))
-        viz(G,pos)    
+        viz(G,pos)   
+     
+    stats(G,init)
+    
+    return G, init
+    
+
     
 def viz(G,pos):   
     node_colors = []
@@ -122,14 +136,14 @@ def viz(G,pos):
         
     nx.draw_networkx_nodes(G,
             pos,
-            linewidths=0.5,
+            linewidths=0.7,
             node_size=20,
             with_labels=False,
             node_color = node_colors
             )    
    
     nx.draw_networkx_edges(G,pos,edgelist=G.edges(),
-            width=0.5,
+            width=0.7,
             edge_color=edge_colors,
             alpha=0.5,
             arrows=False)
@@ -216,43 +230,100 @@ def graph_properties(G):
         nx.average_clustering(G),
         diam,
         len([u for u in G.nodes() if d[u] > sqrt_n]), # num nodes high degree
-        max(len(c) for c in nx.connected_components(G)) # len(largest comp)
+        max(len(c) for c in nx.connected_components(G)), # len(largest comp)
+        nx.average_shortest_path_length(G)
     )
+    
+def short_path_test(G,n):
+    SP = nx.single_source_dijkstra_path_length(G, n) 
+    
+    key, value = max(SP.items(), key=lambda x:x[1])    
+    
+    print("Longest Shortest Path,", key, "of length ", value)
+    
+    status = G.node[key]['color']
+
+    if status == 'green':
+        print("=not infected")
+    elif status == 'blue':
+        print("recovered")
+    else:
+        print("dead")
+    
+    return status
+    
+def stats(G,init):
+    print("---")
+    print("Source node : ", init)
+    print("Degree: ", nx.degree(G,init))
+    print("Closeness Centrality: ", nx.closeness_centrality(G,init))
+
+    
+    for i in G.nodes():
+        if G.node[i]["state"] == 0:
+            print("---")
+            print("Susceptible node : ", i)
+            print("Degree: ", nx.degree(G,i))
+            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
+
+
+        elif G.node[i]["state"] >= 0:
+            print("---")
+            print("Alive node : ",i) 
+            print("Degree: ", nx.degree(G,i))
+            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
+            
+        elif G.node[i]["state"] > 0:
+            print("---")
+            print("Infected node : ", i) 
+            print("Degree: ", nx.degree(G,i))
+            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
+        
+
+
 
         
     
 if __name__ == "__main__":
     
-    n = 30 # number of nodes
+    n = 15 # number of nodes
     pn = 0.2 # per-edge probability of existing
-    p = 0.1 # probability of acquiring infection from a single neighbour, per time-step
+    p = 0.3 # probability of acquiring infection from a single neighbour, per time-step
     rp = 0.4 # probability of recovery 
     i = 1 # number of nodes initially infected
-    td = 4 # td time-steps after infection, the individual dies
+    td = 8 # td time-steps after infection, the individual dies
     nsteps = 25 # how many time-steps to run
     large_airports = 50 # picking the initial edpidemic spreading airport to have degree greater than n
     
-    G = nx.erdos_renyi_graph(n, pn)
+    print("----------")
+    print("Erdo Renyi")
     
-    for u,v,d in G.edges(data=True):
+    G_er = nx.erdos_renyi_graph(n, pn)
+
+    
+    for u,v,d in G_er.edges(data=True):
         d['weight']=random.random()
    
     #print(G.edges(data=True))
-#    run(G,"random")
+    print(graph_properties(G_er))
+    G_er, init_er = run(G_er,'random')
+    print(short_path_test(G_er, init_er))
     
+    print("----------")
+    print("Real World Graph")
     nodes = 'sub_us_airports.csv' 
     edges = 'edges.txt'
-    G = real_world_airport_graph(nodes, edges)
+    Greal = real_world_airport_graph(nodes, edges)
     
     #remove nodes which have degree zero OR Keep nodes with degree > 0
-    deg = G.degree()
+    deg = Greal.degree()
     #to_remove = [n for n in deg if deg[n] == 0]
     to_keep = [n for n in deg if deg[n] != 0]
-    G= G.subgraph(to_keep)
-    G= normalize_edge_weight(G)
+    Gsub= Greal.subgraph(to_keep)
+    Greal= normalize_edge_weight(Gsub)
     
-    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp = graph_properties(G)
-    print(graph_properties(G))
+    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp, av_shortest_path = graph_properties(Greal)
+    print(graph_properties(Greal))
 
-    run(G,"node_deg")
-  
+    G_real, init_real = run(Greal,"node_deg") 
+    print(short_path_test(G_real, init_real))
