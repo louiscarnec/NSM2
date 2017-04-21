@@ -16,6 +16,9 @@ import numpy as np
 import operator
 import matplotlib.pyplot as plt
 import heapq
+from collections import defaultdict
+
+
 
 
 
@@ -102,7 +105,8 @@ def run(G,simulation):
     print("Airport clustering: ", nx.clustering(G,init))
 #    print("Airport eccentricity: ", nx.eccentricity(G,init))
 
-    
+    Gpast = 0    
+
     w = nsteps #creating a matrix with % of infected, susceptible, recovered to plot 
     h = 4
     stats_matrix = [[0 for x in range(h)] for y in range(w)] 
@@ -123,6 +127,7 @@ def run(G,simulation):
         stats_matrix[i][3] = pdead
 
         viz(G,pos) 
+        
         
      
 #    stats(G,init)
@@ -214,7 +219,7 @@ def real_world_airport_graph(nodes, edges):
                     line_num += 1
     return G
     
-def stats(G,init):
+def stat(G,init):
     stats = {}
     stats['Initial Node'] = init
     stats['Node Degree'] = nx.degree(G,init)
@@ -241,7 +246,6 @@ def stats(G,init):
     stats['Mean Degree of Dead Nodes'] = meandegdead
     meanclosdead = (np.mean([nx.closeness_centrality(G,i) for i in G.nodes() if G.node[i]["state"] < 0]))
     stats['Mean Closeness Centrality of Dead Nodes'] = meanclosdead
-
     return stats
 
     
@@ -310,7 +314,8 @@ def min_degcentrality(G):
 
 def gDiameterTest(n,nsteps):
     diameterList = [["pn"],["diameter"],["inftime"],["rectime"],["deadtime"]]
-    
+    statlist = []
+
     timeinf = 0
     timerec = 0
     timedead = 0
@@ -352,8 +357,11 @@ def gDiameterTest(n,nsteps):
         diameterList[4].append(timedead)
         
         plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac))
+        
+        statlist.append(i)
+        statlist.append(stat(G,init).items())
 
-    return diameterList
+    return diameterList, statlist
     
 def subgraph(G,nsteps):
     
@@ -419,12 +427,79 @@ def resultssubgraph(G,nsteps,sim_str):
     subgraphlist[2].append(timerec)
     subgraphlist[3].append(timedead) 
     
-    stats = stats(G,init)
+    statistics = stat(G,init)
+
+    return subgraphlist, statistics
+            
+def testingPrint():
+    print("---")
+
+    print("Testing on graphs with increasing probability of edge existence between nodes" )    
+    Diameter_test_data, stats = gDiameterTest(n,nsteps)
+    print(stats)
+    
+    print("---")
+    print("Testing on real-world Airport Graph")
+    G, init, matrix = run(Greal,'random')
+    stat(G,init)
+    
+    print("Testing on subgraphs of the real-world airport graph")
+    SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(Greal,nsteps)
+    print("Subgraph of 20 largest edge weight")
+    largwlist,stats = resultssubgraph(SG_largeweight,nsteps,"Subgraph 20 largest edge weights")
+    print("Subgraph of 20 lowest edge weight")
+    print(stats)
+    lowwlist, stats = resultssubgraph(SG_lowweight,nsteps,"Subgraph 20 lowest edge weights")
+    print("Subgraph of 20 largest degree centrality nodes")
+    print(stats)
+    top20list, stats = resultssubgraph(SG_top20DC,nsteps,"Subgraph 20 largest degree centrality nodes")
+    print("Subgraph of 20 lowest degree centrality nodes")
+    print(stats)
+    low20list, stats = resultssubgraph(SG_low20DC,nsteps,"Subgraph 20 lowest degree centrality nodes")
+    print("Minimum Spanning Tree")
+    minspanlist, stats = resultssubgraph(minspan,nsteps,"Minimum Spanning Tree")
+    print(stats)
+
+    print("---")
+    
+    print("Test using nodes with maximimum and minimum betweenness centrality")
+    maxkeybc, maxvalbc = max_btcentrality(Greal)
+    minkeybc, minvalbc = min_btcentrality(Greal)
+    print("Max Betweenness Centrality Source Node")
+    Gmaxb, init, matrix_maxbc = run(Greal, maxkeybc)
+    plotting(matrix_maxbc, nsteps, "Max Betweeness Centrality Source Node")
+    print(stat(Gmaxb,init))
+
+    print("Min Betweenness Centrality Source Node")
+    Gminb, init, matrix_minbc = run(Greal, minkeybc)
+    plotting(matrix_minbc, nsteps, "Min Betweeness Centrality Source Node")
+    print(stat(Gminb,init))
 
     
+    print("---")
+
+    print("Test using nodes with maximimum and minimum degree centrality")
+    maxkeydegc, maxvaldegc = max_degcentrality(Greal)
+    minkeydegc, minvaldegc = min_degcentrality(Greal)
     
-    return subgraphlist, stats
-            
+    print("Max Degree Centrality Source Node")
+    Gmaxdeg, init, matrix_maxdegc = run(Greal, maxkeydegc)
+    plotting(matrix_maxdegc, nsteps, "Max Degree Centrality Source Node")
+    print(stat(Gmaxdeg,init))
+
+    print("Min Degree Centrality Source Node")
+    Gmindeg, init, matrix_mindegc = run(Greal, minkeydegc)
+    plotting(matrix_mindegc, nsteps, "Min Degree Centrality Source Node")
+    print(stat(Gmindeg,init))
+
+    
+    print("---")
+    
+    print("Test using center of graph")
+    center = nx.center(Greal)
+    Gcenter, init, matrix_center = run(Greal, center[0])
+    plotting(matrix_center, nsteps, "Initial Node: Center of Graph")
+    print(stat(Gcenter,init))
         
     
     
@@ -475,87 +550,25 @@ if __name__ == "__main__":
     rp = 0 # probability of recovery 
     td = math.inf # td time-steps after infection, the individual dies
     
-    print("---")
+    testingPrint()
 
-    print("Testing on graphs with increasing probability of edge existence between nodes" )    
-    Diameter_test_data = gDiameterTest(n,nsteps)
+    "Simulation 2 - Airports can die and cannot recover"
     
-    print("---")
+    p = 0.5 # probability of acquiring infection from a single neighbour, per time-step
+    rp = 0 # probability of recovery 
+    td = 4 # td time-steps after infection, the individual dies
+
+    testingPrint()
+
+    "Simulation 3 - Airports can die and recover"
+    p = 0.5 # probability of acquiring infection from a single neighbour, per time-step
+    rp = 0.2 # probability of recovery 
+    td = 4 # td time-steps after infection, the individual dies
+
+    testingPrint()
     
-    print("Testing on subgraphs of the real-world airport graph")
-    SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(Greal,nsteps)
-    print("Subgraph of 20 largest edge weight")
-    largwlist,stats = resultssubgraph(SG_largeweight,nsteps,"Subgraph 20 largest edge weights")
-    print("Subgraph of 20 lowest edge weight")
-    print(stats)
-    lowwlist, stats = resultssubgraph(SG_lowweight,nsteps,"Subgraph 20 lowest edge weights")
-    print("Subgraph of 20 largest degree centrality nodes")
-    print(stats)
-    top20list, stats = resultssubgraph(SG_top20DC,nsteps,"Subgraph 20 largest degree centrality nodes")
-    print("Subgraph of 20 lowest degree centrality nodes")
-    print(stats)
-    low20list, stats = resultssubgraph(SG_low20DC,nsteps,"Subgraph 20 lowest degree centrality nodes")
-    print("Minimum Spanning Tree")
-    minspanlist, stats = resultssubgraph(minspan,nsteps,"Minimum Spanning Tree")
-    print(stats)
 
-    print("---")
-    
-    print("Test using nodes with maximimum and minimum betweenness centrality")
-    maxkeybc, maxvalbc = max_btcentrality(Greal)
-    minkeybc, minvalbc = min_btcentrality(Greal)
-    print("Max Betweenness Centrality Source Node")
-    Gmaxb, init, matrix_maxbc = run(Greal, maxkeybc)
-    plotting(matrix_maxbc, nsteps, "Max Betweeness Centrality Source Node")
-    print(stats(Gmaxb,init))
-
-    print("Min Betweenness Centrality Source Node")
-    Gminb, init, matrix_minbc = run(Greal, minkeybc)
-    plotting(matrix_minbc, nsteps, "Min Betweeness Centrality Source Node")
-    print(stats(Gminb,init))
-
-    
-    print("---")
-
-    print("Test using nodes with maximimum and minimum degree centrality")
-    maxkeydegc, maxvaldegc = max_degcentrality(Greal)
-    minkeydegc, minvaldegc = min_degcentrality(Greal)
-    
-    print("Max Degree Centrality Source Node")
-    Gmaxdeg, init, matrix_maxdegc = run(Greal, maxkeydegc)
-    plotting(matrix_maxdegc, nsteps, "Max Degree Centrality Source Node")
-    print(stats(Gmaxdeg,init))
-
-    print("Min Degree Centrality Source Node")
-    Gmindeg, init, matrix_mindegc = run(Greal, minkeydegc)
-    plotting(matrix_mindegc, nsteps, "Min Degree Centrality Source Node")
-    print(stats(Gmindeg,init))
-
-    
-    print("---")
-    
-    print("Test using center of graph")
-    center = nx.center(Greal)
-    Gcenter, init, matrix_center = run(Greal, center[0])
-    plotting(matrix_center, nsteps, "Initial Node: Center of Graph")
-    print(stats(Gcenter,init))
-
-#    "Simulation 2 - Airports can die and cannot recover"
-#    
-#    p = 0.5 # probability of acquiring infection from a single neighbour, per time-step
-#    rp = 0 # probability of recovery 
-#    td = 4 # td time-steps after infection, the individual dies
-#    Diameter_test_data = gDiameterTest(n,nsteps)
-#
-#
-#    "Simulation 3 - Airports can die and recover"
-#    p = 0.5 # probability of acquiring infection from a single neighbour, per time-step
-#    rp = 0.2 # probability of recovery 
-#    td = 4 # td time-steps after infection, the individual dies
-#
-#    
-#
-#   
+   
 
 
 #    print(short_path_test(G_er, init_er))
