@@ -506,7 +506,11 @@ if __name__ == "__main__":
     Gmindeg, init, matrix_mindegc = run(Greal, minkeydegc)
     plotting(matrix_mindegc, nsteps, "Min Degree Centrality Source Node")
     
-    
+    print("Test using center of graph")
+    center = nx.center(Greal)
+    Gcenter, init, matrix_center = run(Greal, center[0])
+    plotting(matrix_center, nsteps, "Initial Node: Center of Graph")
+
 
 #    "Simulation 2 - Airports can die and cannot recover"
 #    
