@@ -268,9 +268,18 @@ def short_path_test(G,n):
 def max_btcentrality(G):
     bcent = nx.betweenness_centrality(G)
     return max(bcent.items(), key=lambda x:x[1:])
+    
 def min_btcentrality(G):
     bcent = nx.betweenness_centrality(G)
-    return min(bcent.items(), key=lambda x:x[1:])    
+    return min(bcent.items(), key=lambda x:x[1:])   
+    
+def max_degcentrality(G):
+    degcent = nx.degree_centrality(G)
+    return max(degcent.items(), key=lambda x:x[1:]) 
+    
+def min_degcentrality(G):
+    degcent = nx.degree_centrality(G)
+    return min(degcent.items(), key=lambda x:x[1:])    
 
 def gDiameterTest(n,nsteps):
     diameterList = [["pn"],["diameter"],["inftime"],["rectime"],["deadtime"]]
@@ -314,6 +323,8 @@ def gDiameterTest(n,nsteps):
         diameterList[2].append(timeinf)
         diameterList[3].append(timerec)
         diameterList[4].append(timedead)
+        
+        plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac))
 
     return diameterList
     
@@ -344,7 +355,7 @@ def subgraph(G,nsteps):
     return SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan
 
     
-def resultssubgraph(G,nsteps):
+def resultssubgraph(G,nsteps,sim_str):
     
     subgraphlist = [["diameter"],["inftime"],["rectime"],["deadtime"]]
     
@@ -379,7 +390,8 @@ def resultssubgraph(G,nsteps):
     subgraphlist[0].append(diameter)
     subgraphlist[1].append(timeinf)
     subgraphlist[2].append(timerec)
-    subgraphlist[3].append(timedead)   
+    subgraphlist[3].append(timedead) 
+    
     
     return subgraphlist
             
@@ -423,8 +435,8 @@ def plotting(matrix, nsteps, sim_str):
     plt.ylabel('%')
     plt.xlim(-0.5, nsteps)
     plt.ylim(-0.1, 1.1)
-    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
-       ncol=2, mode="expand", borderaxespad=0.)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
+       ncol=2, fancybox=True, borderaxespad=0.)
     plt.show()
 
 
@@ -450,20 +462,6 @@ if __name__ == "__main__":
     Gsub = Greal.subgraph(to_keep)
     Greal = normalize_edge_weight(Gsub)
     
-#    print("----------")
-#    print("Erdos-Renyi Graph")
-#    G_er = nx.erdos_renyi_graph(n, pn)
-#    for u,v,d in G_er.edges(data=True):
-#        d['weight']=random.random()
-#    
-#    G_er, init_er,matrix = run(G_er,'random')
-#    
-#    
-##    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp, average_path = graph_properties(Greal)        
-#    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp = graph_properties(G_er)    
-#    print(graph_properties(G_er))  
-#    print("Diameter of Graph: ", diameter)
-#    
     """Simulation 1 - Airports cannot die or recover"""
     
     print("Simulation 1 - Airports cannot die or recover")
@@ -472,18 +470,43 @@ if __name__ == "__main__":
     rp = 0 # probability of recovery 
     td = math.inf # td time-steps after infection, the individual dies
 
-#    Diameter_test_data = gDiameterTest(n,nsteps)
-
-#    
-#    G_er, init_er,matrix = run(G_er,'random')
+    print("Testing on graphs with increasing probability of edge existence between nodes" )    
+    Diameter_test_data = gDiameterTest(n,nsteps)
     
-#    plotting(matrix, nsteps, 'Simulation 1')
-#    
-#    
-#    
-#    maxkeybc, maxvalbc = max_btcentrality(G_er)
-#    minkeybc, minvalbc = min_btcentrality(G_er)
+    print("Testing on subgraphs of the real-world airport graph")
+    SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(Greal,nsteps)
+    print("Subgraph of 20 largest edge weight")
+    largwlist = resultssubgraph(SG_largeweight,nsteps,"Subgraph 20 largest edge weights")
+    print("Subgraph of 20 lowest edge weight")
+    lowwlist = resultssubgraph(SG_lowweight,nsteps,"Subgraph 20 lowest edge weights")
+    print("Subgraph of 20 largest degree centrality nodes")
+    top20list = resultssubgraph(SG_top20DC,nsteps,"Subgraph 20 largest degree centrality nodes")
+    print("Subgraph of 20 lowest degree centrality nodes")
+    low20list = resultssubgraph(SG_low20DC,nsteps,"Subgraph 20 lowest degree centrality nodes")
+    print("Minimum Spanning Tree")
+    minspanlist = resultssubgraph(minspan,nsteps,"Minimum Spanning Tree")
+ 
+    print("Test using nodes with maximimum and minimum betweenness centrality")
+    maxkeybc, maxvalbc = max_btcentrality(Greal)
+    minkeybc, minvalbc = min_btcentrality(Greal)
+    print("Max Betweenness Centrality Source Node")
+    Gmaxb, init, matrix_maxbc = run(Greal, maxkeybc)
+    plotting(matrix_maxbc, nsteps, "Max Betweeness Centrality Source Node")
+    print("Min Betweenness Centrality Source Node")
+    Gminb, init, matrix_minbc = run(Greal, minkeybc)
+    plotting(matrix_minbc, nsteps, "Min Betweeness Centrality Source Node")
 
+    print("Test using nodes with maximimum and minimum degree centrality")
+    maxkeydegc, maxvaldegc = max_degcentrality(Greal)
+    minkeydegc, minvaldegc = min_degcentrality(Greal)
+    print("Max Degree Centrality Source Node")
+    Gmaxdeg, init, matrix_maxdegc = run(Greal, maxkeydegc)
+    plotting(matrix_maxdegc, nsteps, "Max Degree Centrality Source Node")
+    print("Min Degree Centrality Source Node")
+    Gmindeg, init, matrix_mindegc = run(Greal, minkeydegc)
+    plotting(matrix_mindegc, nsteps, "Min Degree Centrality Source Node")
+    
+    
 
 #    "Simulation 2 - Airports can die and cannot recover"
 #    
