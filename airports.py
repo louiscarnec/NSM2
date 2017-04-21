@@ -14,6 +14,8 @@ import math
 import scipy
 import numpy as np
 import operator
+import matplotlib.pyplot as plt
+import heapq
 
 
 
@@ -27,7 +29,9 @@ def infection_init(G,init):
     G.node[init]["state"] = 1
     G.node[init]["color"] = 'yellow'
 
-def step(G,time):
+            
+
+def step(G):
     """Given a graph G, run one time-step."""
     new_state = {}
     for u, d in G.nodes(data=True):
@@ -45,7 +49,7 @@ def step(G,time):
             if random.random() < rp/G.node[u]["state"] :
                 G.node[u]["state"] = 0     # reset to susceptible
                 G.node[u]["color"] = 'blue'     #set the node colour to blue
-
+ 
                 
 def infection_update(s1, ss_w):
     """Update the state of node s1, given the states of its neighbours ss."""   
@@ -64,6 +68,7 @@ def infection_update(s1, ss_w):
                 return 1
     
     return 0
+    
                    
 def normalize_edge_weight(G):
     mx_weight =0
@@ -77,7 +82,7 @@ def normalize_edge_weight(G):
          
     return G
     
-def run(G,simulation):
+def run(G,simulation):    
     
     pos=nx.spring_layout(G)
     
@@ -95,24 +100,34 @@ def run(G,simulation):
     print("Source Airport : ", init)
     print("Airport closeness centrality: ", nx.closeness_centrality(G,init))
     print("Airport clustering: ", nx.clustering(G,init))
-    print("Airport eccentricity: ", nx.eccentricity(G,init))
+#    print("Airport eccentricity: ", nx.eccentricity(G,init))
 
     
+    w = nsteps #creating a matrix with % of infected, susceptible, recovered to plot 
+    h = 4
+    stats_matrix = [[0 for x in range(h)] for y in range(w)] 
+
     print("TimeStep Susceptible(%), Alive(%), Infected(%),Pdead(%)")
     for i in range(nsteps):
-        time = i
-        step(G,time)
+        step(G)
         psus = sum(G.node[i]["state"] == 0 for i in G.nodes()) / nx.number_of_nodes(G)
         palive = sum(G.node[i]["state"] >= 0 for i in G.nodes()) / nx.number_of_nodes(G)
         pinf = sum(G.node[i]["state"] > 0 for i in G.nodes()) / nx.number_of_nodes(G)
         prec = sum(G.node[i]["color"] > 'blue' for i in G.nodes()) / nx.number_of_nodes(G)
         pdead = sum(G.node[i]["state"] < 0 for i in G.nodes()) / nx.number_of_nodes(G)
         print("Step:%2d, psusceptible: %.2f  , palive: %.2f , pInfected: %.2f , pRecovered: %.2f, pDead: %.2f" % (i,psus, palive, pinf, prec,pdead))
-        viz(G,pos)   
+        
+        stats_matrix[i][0] = psus
+        stats_matrix[i][1] = pinf
+        stats_matrix[i][2] = prec
+        stats_matrix[i][3] = pdead
+
+        viz(G,pos) 
+        
      
-    stats(G,init)
+#    stats(G,init)
     
-    return G, init
+    return G, init, stats_matrix
     
 
     
@@ -153,11 +168,9 @@ def viz(G,pos):
 
     
 def real_world_airport_graph(nodes, edges):
-    """ This function creates a graph using a databse of aiports and their associated routes.
+    """ This function creates a graph using a database of aiports and their associated routes.
     
-    Airports are represented by nodes and routes by edges.
-    
-    """
+    Airports are represented by nodes and routes by edges."""
     
     G = nx.Graph()
     
@@ -231,7 +244,7 @@ def graph_properties(G):
         diam,
         len([u for u in G.nodes() if d[u] > sqrt_n]), # num nodes high degree
         max(len(c) for c in nx.connected_components(G)), # len(largest comp)
-        nx.average_shortest_path_length(G)
+#        nx.average_shortest_path_length(G)
     )
     
 def short_path_test(G,n):
@@ -244,7 +257,7 @@ def short_path_test(G,n):
     status = G.node[key]['color']
 
     if status == 'green':
-        print("=not infected")
+        print("not infected")
     elif status == 'blue':
         print("recovered")
     else:
@@ -252,78 +265,260 @@ def short_path_test(G,n):
     
     return status
     
-def stats(G,init):
-    print("---")
-    print("Source node : ", init)
-    print("Degree: ", nx.degree(G,init))
-    print("Closeness Centrality: ", nx.closeness_centrality(G,init))
+def max_btcentrality(G):
+    bcent = nx.betweenness_centrality(G)
+    return max(bcent.items(), key=lambda x:x[1:])
+def min_btcentrality(G):
+    bcent = nx.betweenness_centrality(G)
+    return min(bcent.items(), key=lambda x:x[1:])    
+
+def gDiameterTest(n,nsteps):
+    diameterList = [["pn"],["diameter"],["inftime"],["rectime"],["deadtime"]]
+    
+    timeinf = 0
+    timerec = 0
+    timedead = 0
+    
+    for i in range(10):
+        print("Erdos-Renyi Graph with ", i ," probability of edge existing")
+        frac = i/100
+        G = nx.erdos_renyi_graph(n, frac)
+        for u,v,d in G.edges(data=True):
+            d['weight']=random.random()
+        try:
+            diameter = nx.diameter(G)
+        except nx.NetworkXError:
+            diameter = math.inf
+            
+        G, init, matrix = run(G,'random')
+        
+        for nstep in range(nsteps):
+            if matrix[nstep][1] == 1.0:
+                timeinf = nstep
+                break
+            else:
+                timeinf = None
+            if matrix[nstep][2] == 0.0:
+                timerec = nstep
+                break
+            else:
+                timerec = None
+            if matrix[nstep][3] == 1.0:
+                timedead = nstep  
+                break
+            else:
+                timedead = None
+                
+        diameterList[0].append(frac)
+        diameterList[1].append(diameter)
+        diameterList[2].append(timeinf)
+        diameterList[3].append(timerec)
+        diameterList[4].append(timedead)
+
+    return diameterList
+    
+def subgraph(G,nsteps):
+    
+    "subgraph with only edges of weight >0.75"
+    SG_largeweight = nx.Graph([(u,v,d) for u,v,d in Greal.edges(data=True) if d['weight']>0.75] )
+    
+    "subgraph with only edges of weight <0.5"
+    SG_lowweight = nx.Graph([(u,v,d) for u,v,d in Greal.edges(data=True) if d['weight']<0.5] )
+        
+    "subgraph with 20 largest degree-centrality nodes"
+    l = heapq.nlargest(20, zip(nx.degree_centrality(Greal).values(),nx.degree_centrality(Greal)))
+    locs = []
+    for i in range(len(l)): locs.append(l[i][1])
+    SG_top20DC = nx.subgraph(G, [i for i in locs])
+    
+    "subgraph with 20 lowest degree-centrality nodes"
+    l = heapq.nsmallest(100, zip(nx.degree_centrality(Greal).values(),nx.degree_centrality(Greal)))
+    locs = []
+    for i in range(len(l)): locs.append(l[i][1])
+    SG_low20DC = nx.subgraph(G, [i for i in locs])
+    
+    "Minimum Spanning Tree"
+    minspan = nx.minimum_spanning_tree(G)
+
+        
+    return SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan
 
     
-    for i in G.nodes():
-        if G.node[i]["state"] == 0:
-            print("---")
-            print("Susceptible node : ", i)
-            print("Degree: ", nx.degree(G,i))
-            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
-
-
-        elif G.node[i]["state"] >= 0:
-            print("---")
-            print("Alive node : ",i) 
-            print("Degree: ", nx.degree(G,i))
-            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
-            
-        elif G.node[i]["state"] > 0:
-            print("---")
-            print("Infected node : ", i) 
-            print("Degree: ", nx.degree(G,i))
-            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
+def resultssubgraph(G,nsteps):
+    
+    subgraphlist = [["diameter"],["inftime"],["rectime"],["deadtime"]]
+    
+    timeinf = 0
+    timerec = 0
+    timedead = 0
+    
+    try:
+        diameter = nx.diameter(G)
+    except nx.NetworkXError:
+        diameter = math.inf
+       
+    G, init, matrix = run(G,'random')
         
+    for nstep in range(nsteps):
+        if matrix[nstep][1] == 1.0:
+            timeinf = nstep
+            break
+        else:
+            timeinf = None
+        if matrix[nstep][2] == 0.0:
+            timerec = nstep
+            break
+        else:
+            timerec = None
+        if matrix[nstep][3] == 1.0:
+            timedead = nstep  
+            break
+        else:
+            timedead = None
+            
+    subgraphlist[0].append(diameter)
+    subgraphlist[1].append(timeinf)
+    subgraphlist[2].append(timerec)
+    subgraphlist[3].append(timedead)   
+    
+    return subgraphlist
+            
+        
+    
+    
+#    print("---")
+#    print("Source node : ", init)
+#    print("Degree: ", nx.degree(G,init))
+#    print("Closeness Centrality: ", nx.closeness_centrality(G,init))
+#
+#    
+#    for i in G.nodes():
+#        if G.node[i]["state"] == 0:
+#            print("---")
+#            print("Susceptible node : ", i)
+#            print("Degree: ", nx.degree(G,i))
+#            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
+#
+#
+#        elif G.node[i]["state"] >= 0:
+#            print("---")
+#            print("Alive node : ",i) 
+#            print("Degree: ", nx.degree(G,i))
+#            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
+#            
+#        elif G.node[i]["state"] > 0:
+#            print("---")
+#            print("Infected node : ", i) 
+#            print("Degree: ", nx.degree(G,i))
+#            print("Closeness Centrality: ", nx.closeness_centrality(G,i))
+#        
 
+def plotting(matrix, nsteps, sim_str):
+    plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
+    plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
+    plt.plot([i for i in range(len(matrix))],[matrix[i][2] for i in range(len(matrix))],'--bs',label = '% Recovered')
+    plt.plot([i for i in range(len(matrix))],[matrix[i][3] for i in range(len(matrix))],'--ro',label = '% Closed/Dead')
+    plt.title(str(sim_str))
+    plt.xlabel('Time Step')
+    plt.ylabel('%')
+    plt.xlim(-0.5, nsteps)
+    plt.ylim(-0.1, 1.1)
+    plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
+       ncol=2, mode="expand", borderaxespad=0.)
+    plt.show()
 
 
         
     
 if __name__ == "__main__":
     
-    n = 15 # number of nodes
-    pn = 0.2 # per-edge probability of existing
-    p = 0.3 # probability of acquiring infection from a single neighbour, per time-step
-    rp = 0.4 # probability of recovery 
+    "Overall Parameters"
+    n = 143 # number of nodes
+    pn = 0.04 # per-edge probability of existing
     i = 1 # number of nodes initially infected
-    td = 8 # td time-steps after infection, the individual dies
     nsteps = 25 # how many time-steps to run
     large_airports = 50 # picking the initial edpidemic spreading airport to have degree greater than n
     
-    print("----------")
-    print("Erdo Renyi")
-    
-    G_er = nx.erdos_renyi_graph(n, pn)
-
-    
-    for u,v,d in G_er.edges(data=True):
-        d['weight']=random.random()
-   
-    #print(G.edges(data=True))
-    print(graph_properties(G_er))
-    G_er, init_er = run(G_er,'random')
-    print(short_path_test(G_er, init_er))
-    
-    print("----------")
-    print("Real World Graph")
+    "Create Real World Graph"
     nodes = 'sub_us_airports.csv' 
     edges = 'edges.txt'
     Greal = real_world_airport_graph(nodes, edges)
-    
     #remove nodes which have degree zero OR Keep nodes with degree > 0
     deg = Greal.degree()
     #to_remove = [n for n in deg if deg[n] == 0]
     to_keep = [n for n in deg if deg[n] != 0]
-    Gsub= Greal.subgraph(to_keep)
-    Greal= normalize_edge_weight(Gsub)
+    Gsub = Greal.subgraph(to_keep)
+    Greal = normalize_edge_weight(Gsub)
     
-    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp, av_shortest_path = graph_properties(Greal)
-    print(graph_properties(Greal))
+#    print("----------")
+#    print("Erdos-Renyi Graph")
+#    G_er = nx.erdos_renyi_graph(n, pn)
+#    for u,v,d in G_er.edges(data=True):
+#        d['weight']=random.random()
+#    
+#    G_er, init_er,matrix = run(G_er,'random')
+#    
+#    
+##    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp, average_path = graph_properties(Greal)        
+#    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp = graph_properties(G_er)    
+#    print(graph_properties(G_er))  
+#    print("Diameter of Graph: ", diameter)
+#    
+    """Simulation 1 - Airports cannot die or recover"""
+    
+    print("Simulation 1 - Airports cannot die or recover")
+    
+    p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
+    rp = 0 # probability of recovery 
+    td = math.inf # td time-steps after infection, the individual dies
 
-    G_real, init_real = run(Greal,"node_deg") 
-    print(short_path_test(G_real, init_real))
+#    Diameter_test_data = gDiameterTest(n,nsteps)
+
+#    
+#    G_er, init_er,matrix = run(G_er,'random')
+    
+#    plotting(matrix, nsteps, 'Simulation 1')
+#    
+#    
+#    
+#    maxkeybc, maxvalbc = max_btcentrality(G_er)
+#    minkeybc, minvalbc = min_btcentrality(G_er)
+
+
+#    "Simulation 2 - Airports can die and cannot recover"
+#    
+#    p = 0.5 # probability of acquiring infection from a single neighbour, per time-step
+#    rp = 0 # probability of recovery 
+#    td = 4 # td time-steps after infection, the individual dies
+#    Diameter_test_data = gDiameterTest(n,nsteps)
+#
+#
+#    "Simulation 3 - Airports can die and recover"
+#    p = 0.5 # probability of acquiring infection from a single neighbour, per time-step
+#    rp = 0.2 # probability of recovery 
+#    td = 4 # td time-steps after infection, the individual dies
+#
+#    
+#
+#   
+
+
+#    print(short_path_test(G_er, init_er))
+#    
+#    print("----------")
+#    print("Real World Graph")
+#    nodes = 'sub_us_airports.csv' 
+#    edges = 'edges.txt'
+#    Greal = real_world_airport_graph(nodes, edges)
+#    #remove nodes which have degree zero OR Keep nodes with degree > 0
+#    deg = Greal.degree()
+#    #to_remove = [n for n in deg if deg[n] == 0]
+#    to_keep = [n for n in deg if deg[n] != 0]
+#    Gsub= Greal.subgraph(to_keep)
+#    Greal= normalize_edge_weight(Gsub)
+#    
+#    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp, av_shortest_path = graph_properties(Greal)
+#    print(graph_properties(Greal))
+#
+#    G_real, init_real = run(Greal,"node_deg") 
+#    print(short_path_test(G_real, init_real))
