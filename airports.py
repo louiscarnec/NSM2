@@ -162,7 +162,6 @@ def viz(G,pos):   #Function to visualise graph at each time step
             alpha=0.5,
             arrows=False)
        
-    
     plt.show()
 
     
@@ -423,18 +422,18 @@ def resultssubgraph(G,nsteps,sim_str,simulationnumber): #return statistics for s
     return subgraphlist, graph_properties(G)
             
 def testingPrint(simulationnumber): #range of tests for each simulation
-#    print("---")
-#
-#    print("Testing on graphs with increasing probability of edge existence between nodes" )    
-#    Diameter_test_data, graphproperties = gDiameterTest(n,nsteps)
-#    print(graphproperties)
-#    print(Diameter_test_data)
-#    print(stats)
-#    
-#    print("---")
-#    print("Testing on real-world Airport Graph")
-#    G, init, matrix = run(Greal,'random')
-#    stat(G,init)
+    print("---")
+
+    print("Testing on graphs with increasing probability of edge existence between nodes" )    
+    Diameter_test_data, graphproperties = gDiameterTest(n,nsteps,simulationnumber)
+    print(graphproperties)
+    print(Diameter_test_data)
+    
+    print("---")
+    print("Testing on real-world Airport Graph")
+    G, init, matrix = run(Greal,'random')
+    plotting(matrix, nsteps, 'Real-World Airport Graph', simulationnumber)
+    stat(G,init)
 #    
     print("Testing on subgraphs of the real-world airport graph")
     SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(Greal,nsteps)
@@ -510,7 +509,7 @@ def plotting(matrix, nsteps, sim_str, simulationnumber): #plot percentage of nod
         plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
         plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
         plt.plot([i for i in range(len(matrix))],[matrix[i][3] for i in range(len(matrix))],'--ro',label = '% Closed/Dead')
-        plt.plot([i for i in range(len(matrix))],[matrix[i][2] for i in range(len(matrix))],'--bs',label = '% Recovered')
+        #plt.plot([i for i in range(len(matrix))],[matrix[i][2] for i in range(len(matrix))],'--bs',label = '% Recovered')
     plt.title(str(sim_str))
     plt.xlabel('Time Step')
     plt.ylabel('%')
@@ -561,13 +560,13 @@ if __name__ == "__main__":
 
     testingPrint('sim2')
 
-    "Simulation 3 - Airports can die and recover"
-    p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
-    rp = 0.2 # probability of recovery 
-    td = 4 # td time-steps after infection, the individual dies
-
-    testingPrint('sim3')
-    
+#    "Simulation 3 - Airports can die and recover"
+#    p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
+#    rp = 0.2 # probability of recovery 
+#    td = 4 # td time-steps after infection, the individual dies
+#
+#    testingPrint('sim3')
+#    
 
    
 

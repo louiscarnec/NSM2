@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.6)  22 APR 2017 14:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.6)  22 APR 2017 21:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -114,4 +114,429 @@ LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:
+LaTeX Font Info:    ... okay on input line 15.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: subfig package v1.3 is loaded.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count93
+\scratchdimen=\dimen113
+\scratchbox=\box28
+\nofMPsegments=\count94
+\nofMParguments=\count95
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count96
+\MPscratchDim=\dimen114
+\MPnumerator=\count97
+\makeMPintoPDFobject=\count98
+\everyMPtoPDFconversion=\toks18
+) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 46.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 46.
+
+<ploter01.png, id=1, 391.4625pt x 309.155pt>
+File: ploter01.png Graphic file (type png)
+ <use ploter01.png>
+Package pdftex.def Info: ploter01.png used on input line 46.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<ploter03.png, id=3, 391.4625pt x 309.155pt>
+File: ploter03.png Graphic file (type png)
+ <use ploter03.png>
+Package pdftex.def Info: ploter03.png used on input line 49.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<ploter05.png, id=4, 391.4625pt x 309.155pt>
+File: ploter05.png Graphic file (type png)
+ <use ploter05.png>
+Package pdftex.def Info: ploter05.png used on input line 53.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<ploter09.png, id=5, 391.4625pt x 309.155pt>
+File: ploter09.png Graphic file (type png)
+ <use ploter09.png>
+Package pdftex.def Info: ploter09.png used on input line 56.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 43--60
+ [][] 
+ []
+
+[1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./plote
+r01.png> <./ploter03.png> <./ploter05.png> <./ploter09.png>]
+<realworldplot.png, id=20, 391.4625pt x 309.155pt>
+File: realworldplot.png Graphic file (type png)
+ <use realworldplot.png>
+Package pdftex.def Info: realworldplot.png used on input line 81.
+(pdftex.def)             Requested size: 313.17041pt x 247.32433pt.
+
+<sublargedgewsim1.png, id=21, 391.4625pt x 309.155pt>
+File: sublargedgewsim1.png Graphic file (type png)
+
+<use sublargedgewsim1.png>
+Package pdftex.def Info: sublargedgewsim1.png used on input line 93.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<sublowestedgewsim1.png, id=22, 391.4625pt x 309.155pt>
+File: sublowestedgewsim1.png Graphic file (type png)
+
+<use sublowestedgewsim1.png>
+Package pdftex.def Info: sublowestedgewsim1.png used on input line 96.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<largestdegcsim1.png, id=23, 391.4625pt x 309.155pt>
+File: largestdegcsim1.png Graphic file (type png)
+ <use largestdegcsim1.png>
+Package pdftex.def Info: largestdegcsim1.png used on input line 100.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<minspansim1.png, id=24, 391.4625pt x 309.155pt>
+File: minspansim1.png Graphic file (type png)
+ <use minspansim1.png>
+Package pdftex.def Info: minspansim1.png used on input line 103.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 90--107
+ [][] 
+ []
+
+[2 <./realworldplot.png>]
+<11InitialNode_Center_of_graph_1.png, id=29, 386.44376pt x 256.96pt>
+File: 11InitialNode_Center_of_graph_1.png Graphic file (type png)
+
+<use 11InitialNode_Center_of_graph_1.png>
+Package pdftex.def Info: 11InitialNode_Center_of_graph_1.png used on input line
+ 117.
+(pdftex.def)             Requested size: 309.15543pt x 205.56827pt.
+ [3 <./sublargedgewsim1.png> <./sublowestedgewsim1.png> <./largestdegcsim1.png>
+ <./minspansim1.png>]
+<11InitialNode_Center_of_graph_2.png, id=37, 391.4625pt x 328.22626pt>
+File: 11InitialNode_Center_of_graph_2.png Graphic file (type png)
+
+<use 11InitialNode_Center_of_graph_2.png>
+Package pdftex.def Info: 11InitialNode_Center_of_graph_2.png used on input line
+ 124.
+(pdftex.def)             Requested size: 313.17041pt x 262.58136pt.
+ [4 <./11InitialNode_Center_of_graph_1.png>]
+<11MinDegree_Centrality_source_node_1.png, id=42, 386.44376pt x 256.96pt>
+File: 11MinDegree_Centrality_source_node_1.png Graphic file (type png)
+
+<use 11MinDegree_Centrality_source_node_1.png>
+Package pdftex.def Info: 11MinDegree_Centrality_source_node_1.png used on input
+ line 136.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<11MinDegree_Centrality_source_node_2.png, id=43, 391.4625pt x 309.155pt>
+File: 11MinDegree_Centrality_source_node_2.png Graphic file (type png)
+
+<use 11MinDegree_Centrality_source_node_2.png>
+Package pdftex.def Info: 11MinDegree_Centrality_source_node_2.png used on input
+ line 139.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<11MaxDegree_Centrality_source_node_1.png, id=44, 386.44376pt x 256.96pt>
+File: 11MaxDegree_Centrality_source_node_1.png Graphic file (type png)
+
+<use 11MaxDegree_Centrality_source_node_1.png>
+Package pdftex.def Info: 11MaxDegree_Centrality_source_node_1.png used on input
+ line 143.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<11MaxDegree_Centrality_source_node_2.png, id=45, 391.4625pt x 309.155pt>
+File: 11MaxDegree_Centrality_source_node_2.png Graphic file (type png)
+
+<use 11MaxDegree_Centrality_source_node_2.png>
+Package pdftex.def Info: 11MaxDegree_Centrality_source_node_2.png used on input
+ line 146.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 133--150
+ [][] 
+ []
+
+[5 <./11InitialNode_Center_of_graph_2.png>]
+<11MaxBetweeness_centrality_sourcenode_1.png, id=50, 386.44376pt x 256.96pt>
+File: 11MaxBetweeness_centrality_sourcenode_1.png Graphic file (type png)
+
+<use 11MaxBetweeness_centrality_sourcenode_1.png>
+Package pdftex.def Info: 11MaxBetweeness_centrality_sourcenode_1.png used on in
+put line 159.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<11MaxBetweeness_centrality_sourcenode_2.png, id=51, 391.4625pt x 309.155pt>
+File: 11MaxBetweeness_centrality_sourcenode_2.png Graphic file (type png)
+
+<use 11MaxBetweeness_centrality_sourcenode_2.png>
+Package pdftex.def Info: 11MaxBetweeness_centrality_sourcenode_2.png used on in
+put line 162.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+<11MinBetweeness_centrality_sourcenode_1.png, id=52, 386.44376pt x 256.96pt>
+File: 11MinBetweeness_centrality_sourcenode_1.png Graphic file (type png)
+
+<use 11MinBetweeness_centrality_sourcenode_1.png>
+Package pdftex.def Info: 11MinBetweeness_centrality_sourcenode_1.png used on in
+put line 166.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<11MinBetweeness_centrality_sourcenode_2.png, id=53, 391.4625pt x 309.155pt>
+File: 11MinBetweeness_centrality_sourcenode_2.png Graphic file (type png)
+
+<use 11MinBetweeness_centrality_sourcenode_2.png>
+Package pdftex.def Info: 11MinBetweeness_centrality_sourcenode_2.png used on in
+put line 169.
+(pdftex.def)             Requested size: 170.71652pt x 134.82098pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 156--173
+ [][] 
+ []
+
+[6 <./11MinDegree_Centrality_source_node_1.png> <./11MinDegree_Centrality_sourc
+e_node_2.png> <./11MaxDegree_Centrality_source_node_1.png> <./11MaxDegree_Centr
+ality_source_node_2.png>]
+<InitialNode_Center_of_graph_1.png, id=61, 386.44376pt x 256.96pt>
+File: InitialNode_Center_of_graph_1.png Graphic file (type png)
+
+<use InitialNode_Center_of_graph_1.png>
+Package pdftex.def Info: InitialNode_Center_of_graph_1.png used on input line 1
+80.
+(pdftex.def)             Requested size: 309.15543pt x 205.56827pt.
+
+<InitialNode_Center_of_graph_2.png, id=62, 391.4625pt x 328.22626pt>
+File: InitialNode_Center_of_graph_2.png Graphic file (type png)
+
+<use InitialNode_Center_of_graph_2.png>
+Package pdftex.def Info: InitialNode_Center_of_graph_2.png used on input line 1
+87.
+(pdftex.def)             Requested size: 313.17041pt x 262.58136pt.
+ [7 <./11MaxBetweeness_centrality_sourcenode_1.png> <./11MaxBetweeness_centrali
+ty_sourcenode_2.png> <./11MinBetweeness_centrality_sourcenode_1.png> <./11MinBe
+tweeness_centrality_sourcenode_2.png> <./InitialNode_Center_of_graph_1.png>]
+<MinDegree_Centrality_source_node_1.png, id=72, 386.44376pt x 256.96pt>
+File: MinDegree_Centrality_source_node_1.png Graphic file (type png)
+
+<use MinDegree_Centrality_source_node_1.png>
+Package pdftex.def Info: MinDegree_Centrality_source_node_1.png used on input l
+ine 199.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<MinDegree_Centrality_source_node_2.png, id=73, 391.4625pt x 328.22626pt>
+File: MinDegree_Centrality_source_node_2.png Graphic file (type png)
+
+<use MinDegree_Centrality_source_node_2.png>
+Package pdftex.def Info: MinDegree_Centrality_source_node_2.png used on input l
+ine 202.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+
+<MaxDegree_Centrality_source_node_1.png, id=74, 386.44376pt x 256.96pt>
+File: MaxDegree_Centrality_source_node_1.png Graphic file (type png)
+
+<use MaxDegree_Centrality_source_node_1.png>
+Package pdftex.def Info: MaxDegree_Centrality_source_node_1.png used on input l
+ine 206.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<MaxDegree_Centrality_source_node_2.png, id=75, 391.4625pt x 328.22626pt>
+File: MaxDegree_Centrality_source_node_2.png Graphic file (type png)
+
+<use MaxDegree_Centrality_source_node_2.png>
+Package pdftex.def Info: MaxDegree_Centrality_source_node_2.png used on input l
+ine 209.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 196--213
+ [][] 
+ []
+
+[8 <./InitialNode_Center_of_graph_2.png>]
+<MaxBetweeness_centrality_sourcenode_1.png, id=80, 386.44376pt x 256.96pt>
+File: MaxBetweeness_centrality_sourcenode_1.png Graphic file (type png)
+
+<use MaxBetweeness_centrality_sourcenode_1.png>
+Package pdftex.def Info: MaxBetweeness_centrality_sourcenode_1.png used on inpu
+t line 222.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<MaxBetweeness_centrality_sourcenode_2.png, id=81, 391.4625pt x 328.22626pt>
+File: MaxBetweeness_centrality_sourcenode_2.png Graphic file (type png)
+
+<use MaxBetweeness_centrality_sourcenode_2.png>
+Package pdftex.def Info: MaxBetweeness_centrality_sourcenode_2.png used on inpu
+t line 225.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+
+<MinBetweeness_centrality_sourcenode_1.png, id=82, 386.44376pt x 256.96pt>
+File: MinBetweeness_centrality_sourcenode_1.png Graphic file (type png)
+
+<use MinBetweeness_centrality_sourcenode_1.png>
+Package pdftex.def Info: MinBetweeness_centrality_sourcenode_1.png used on inpu
+t line 229.
+(pdftex.def)             Requested size: 170.71652pt x 113.51364pt.
+
+<MinBetweeness_centrality_sourcenode_2.png, id=83, 391.4625pt x 328.22626pt>
+File: MinBetweeness_centrality_sourcenode_2.png Graphic file (type png)
+
+<use MinBetweeness_centrality_sourcenode_2.png>
+Package pdftex.def Info: MinBetweeness_centrality_sourcenode_2.png used on inpu
+t line 232.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 219--236
+ [][] 
+ []
+
+[9 <./MinDegree_Centrality_source_node_1.png> <./MinDegree_Centrality_source_no
+de_2.png> <./MaxDegree_Centrality_source_node_1.png> <./MaxDegree_Centrality_so
+urce_node_2.png>] <plotdie01.png, id=91, 391.4625pt x 328.22626pt>
+File: plotdie01.png Graphic file (type png)
+
+<use plotdie01.png>
+Package pdftex.def Info: plotdie01.png used on input line 267.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+ <plotdie03.png, id=92, 391.4625pt x 328.22626pt>
+File: plotdie03.png Graphic file (type png)
+
+<use plotdie03.png>
+Package pdftex.def Info: plotdie03.png used on input line 270.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+ <plotdie05.png, id=93, 391.4625pt x 328.22626pt>
+File: plotdie05.png Graphic file (type png)
+
+<use plotdie05.png>
+Package pdftex.def Info: plotdie05.png used on input line 274.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+ <plotdie09.png, id=94, 391.4625pt x 328.22626pt>
+File: plotdie09.png Graphic file (type png)
+
+<use plotdie09.png>
+Package pdftex.def Info: plotdie09.png used on input line 277.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 264--281
+ [][] 
+ []
+
+[10 <./MaxBetweeness_centrality_sourcenode_1.png> <./MaxBetweeness_centrality_s
+ourcenode_2.png> <./MinBetweeness_centrality_sourcenode_1.png> <./MinBetweeness
+_centrality_sourcenode_2.png>]
+<realworldplotsim2.png, id=102, 391.4625pt x 328.22626pt>
+File: realworldplotsim2.png Graphic file (type png)
+
+<use realworldplotsim2.png>
+Package pdftex.def Info: realworldplotsim2.png used on input line 290.
+(pdftex.def)             Requested size: 313.17041pt x 262.58136pt.
+ [11 <./plotdie01.png> <./plotdie03.png> <./plotdie05.png> <./plotdie09.png>]
+<largestedgesim2.png, id=110, 391.4625pt x 328.22626pt>
+File: largestedgesim2.png Graphic file (type png)
+
+<use largestedgesim2.png>
+Package pdftex.def Info: largestedgesim2.png used on input line 301.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+
+<lowestedgesim2.png, id=111, 391.4625pt x 328.22626pt>
+File: lowestedgesim2.png Graphic file (type png)
+
+<use lowestedgesim2.png>
+Package pdftex.def Info: lowestedgesim2.png used on input line 304.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+ <largestsim2.png, id=112, 391.4625pt x 328.22626pt>
+File: largestsim2.png Graphic file (type png)
+
+<use largestsim2.png>
+Package pdftex.def Info: largestsim2.png used on input line 308.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+ <minspantreesim2.png, id=113, 391.4625pt x 328.22626pt>
+File: minspantreesim2.png Graphic file (type png)
+
+<use minspantreesim2.png>
+Package pdftex.def Info: minspantreesim2.png used on input line 311.
+(pdftex.def)             Requested size: 170.71652pt x 143.13786pt.
+
+Overfull \hbox (20.43304pt too wide) in paragraph at lines 298--315
+ [][] 
+ []
+
+[12 <./realworldplotsim2.png>] [13 <./largestedgesim2.png> <./lowestedgesim2.pn
+g> <./largestsim2.png> <./minspantreesim2.png>] (./pictures.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2928 strings out of 493089
+ 49674 string characters out of 6134842
+ 107981 words of memory out of 5000000
+ 6371 multiletter control sequences out of 15000+600000
+ 6981 words of font info for 25 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 37i,17n,38p,237b,429s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on pictures.pdf (13 pages, 812820 bytes).
+PDF statistics:
+ 144 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
+

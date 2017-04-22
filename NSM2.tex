@@ -13,6 +13,13 @@
 \usetikzlibrary{quotes,angles,positioning}
 \usepackage{standalone}
 \usepackage{multirow}
+\usepackage{float}
+
+\newcommand{\subf}[2]{%
+  {\small\begin{tabular}[t]{@{}c@{}}
+  #1\\#2
+  \end{tabular}}%
+}  
 
 \usepackage{hyperref}
 \hypersetup{
@@ -36,8 +43,6 @@
 \setlength{\parindent}{5ex}
 
 \begin{document}
-
-
 
 \begin{titlepage}
 
@@ -107,16 +112,16 @@ Adedayo \textsc{Adelowokan}
 
 
 
-\section{Read world phenomenon : Spread of disease through airports network} 
+\section{Real world phenomenon: Spread of disease through airports network} 
 
 
-The world is closely connected than ever before, through transportation networks. Air, sea and land transportation continues to expand in reach, speed of travel and volume of passengers and goods carried. Pathogens and their vectors can now move further, faster and in greater numbers than ever before \cite{tatem2006global}. Epidemics can occur more easily and the emergence of novel pathogens exacerbates the situation \cite{jones2008global}. Understanding the dispersal behaviour and identifying the outbreak of an epidemic in the preliminary stages enables critical response planning. Network topology properties surrounding the debut location explains much of the early stage variation in the spread of diseases \cite{lawyer2016measuring}.
+The world is more closely connected than ever before by modern transportation networks. Air, sea and land transportation continues to expand in reach, speed of travel and volume of passengers and goods carried. Pathogens and their vectors can now move further, faster and in greater numbers than ever before \cite{tatem2006global}. Epidemics can occur more easily and the emergence of novel pathogens exacerbates the situation \cite{jones2008global}. Understanding the dispersal behaviour and identifying the outbreak of an epidemic in its preliminary stages enables critical response planning. Network topology properties that surround the debut location can explain much of the early stage variation in the spread of diseases \cite{lawyer2016measuring}.
 
-In this simulation we will model the spread of disease through world airports network. It is inspired by the work of Yager and Taylor \cite{nicholasyager2014} which models the spread of pathogens through airports using a directed graph. We extend their work of simulating disease spread by selectively infecting the nodes to analyse the impact of graph/node properties such as diameter, average path length , centrality and clustering. 
+In this simulation we will model the spread of disease through the US airport network. It is inspired by the work of Yager and Taylor \cite{nicholasyager2014} which model the spread of pathogens through airports around the world using a directed graph. We will extend their work by testing how graphs (subgraphs of the US networks graph with specific properties and Erdos-Renyi graphs with different edge existence probabilities) and initial infection nodes (with different centrality measures) affect the spread of disease through the network.
 
 \section{Describe briefly your choice of graph model and how it corresponds to the real-world phenomenon, e.g. your choice of directed versus undirected edges, edge weights, allowing or disallowing self-loops, etc.}
 
-Our real-world network graph is undirected where nodes represent airports and edges are routes.We used open source data from \href{http://openflights.org}{openflights.org} along with population of the cities from \href{https://unstats.un.org/unsd/demographic/products/dyb/City_Page.htm}{unstats.un.org}. Redundant edges and unconnected nodes are removed from the graph. Average of population of two cities where airpots are located is calculated and normalised before assigning it as edge weight. Airports where both origin and destination are with-in USA are used, and others are removed.
+Our real-world network graph is undirected where nodes represent airports and edges are routes. We used open source data from \href{http://openflights.org}{openflights.org} along with population of US cities from \href{https://unstats.un.org/unsd/demographic/products/dyb/City_Page.htm}{unstats.un.org}. Redundant edges and unconnected nodes were removed from the graph. Edge weights were calculates by getting the average population of the two cities connected by edges and normalising for all edges. In creating the graph, only edges connecting airports with the US were added.
 
 
 
@@ -324,7 +329,11 @@ Discuss the results
 Statistics
 
 \clearpage
+\section*{Appendix}
+\input{pictures.tex}
 
+
+\clearpage
 \bibliographystyle{acm}
 \bibliography{NSM.bib}
 
