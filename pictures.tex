@@ -13,52 +13,32 @@
 
 
 \begin{document}
-\section*{Appendix}
+\section*{Simulation 1}
 
-\subsection*{Simulation 1}
+\subsection*{Graphs, subgraph and Edge Probability - Diameter}
+
 \subsubsection*{Erdos-Renyi Graphs}
 
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\caption{My caption}
+\caption{Simulation 1: Graph properties for different probabilities $pn$ of edge existence between nodes in Erdos-Renyi graphs }
 \label{my-label}
 \resizebox{\textwidth}{!}{\begin{tabular}{c|c|c|c|c|c|c|c|c}
 \hline
 index & pn & order & size & density & cluster coefficient &diameter & nodes deg $\geq$ n & largest component \\ \hline
-0& 0.01& 143& 107& 0.010538757017630258& 0.02097902097902098& inf& 0& 62\\ \hline 
-1& 0.03& 143& 310& 0.030532847434255887& 0.027917032462487012& inf& 1& 142\\ \hline
- 2& 0.05& 143& 482& 0.047473653107455924& 0.04904388540752172& 5& 4& 143\\ \hline
- 3& 0.07& 143& 733& 0.07219541022357924& 0.06419614482140189& 4& 50& 143\\ \hline
- 4& 0.09& 143& 913& 0.089924160346695564& 0.09865880287030333& 4& 94& 143\\ \hline
- 5& 0.11& 143& 1089& 0.10725893824485373& 0.10842741064136702& 3& 120& 143\\ \hline
+0& 1& 143& 117& 0.011523687580025609& 0.0& inf& 0& 97\\ \hline
+1& 3& 143& 325& 0.032010243277848911& 0.03655788655788656& 7& 0& 143\\ \hline
+2& 5& 143& 527& 0.051905840638235001& 0.05108083447244284& 5& 14& 143\\ \hline
+3& 7& 143& 757& 0.074559243573328077& 0.0733257571774318& 4& 49& 143\\ \hline
+4& 9& 143& 885& 0.087166354771988572& 0.08693534635371428& 4& 87& 143\\ \hline
+5& 11& 143& 1111& 0.10942578548212351& 0.1088499366852766& 3& 128& 143\\ \hline
 \end{tabular}}
 \end{table}
 
-\begin{figure}[h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{grapher01.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{grapher03.png}}
-     {}
-\\
-\hline
-\subf{\includegraphics[width=60mm]{grapher05.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{grapher09.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{}
-\end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
@@ -77,146 +57,267 @@ index & pn & order & size & density & cluster coefficient &diameter & nodes deg 
 \\
 \hline
 \end{tabular}
-\caption{}
+\caption{Simulation 1: Plotting Node States for Erdos Renyi Graphs for pn = 0.1, 0.3, 0.5, 0.9}
+\end{figure}
+
+\subsubsection*{Real Airport Graph and subgraphs}
+
+\begin{table}[H]
+\centering
+\caption{Real World Airport graph and subgraphs graph properties}
+\label{my-label}
+\resizebox{\textwidth}{!}{\begin{tabular}{c|c|c|c|c|c|c|c}
+\hline
+Name & order & size & density & cluster coefficient &diameter & nodes deg $\geq$ n & largest component\\ \hline
+Real World Graph & 143& 1452& 0.14301191765980498& 0.6410089238208931& 4& 73& 143\\ \hline
+Largest Edge Weights &13 & 10 & 0.12820512820512819& 0.0 & inf &1& 7\\ \hline
+Lowest Edge Weights & 27 & 102 & 0.29059829059829062 & 0.6458430700260764& 3& 13& 27\\ \hline
+20 Largest Deg. Cent. & 20& 177& 0.93157894736842106& 0.9423609156581293& 2& 20& 20\\ \hline
+Min Span. Tree & 143& 142& 0.013986013986013986& 0.0& 8& 3& 143\\ \hline
+\end{tabular}}
+\end{table}
+
+\begin{center}
+\includegraphics[scale=0.8]{realworldplot.png}
+\begin{figure}[H]
+\caption{Simulation1: Real-world airport graph properties}
+\end{figure}
+\end{center}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\subf{\includegraphics[width=60mm]{sublargedgewsim1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{sublowestedgewsim1.png}}
+     {}
+\\
+\hline
+\subf{\includegraphics[width=60mm]{largestdegcsim1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{minspansim1.png}}
+     {}
+\\
+\hline
+\end{tabular}
+\caption{Simulation 1: Subgraph node state plots}
+\end{figure}
+
+\subsection*{Source Node Centrality}
+\subsubsection*{Erdos-Renyi Graph with p = ??}
+\subsubsection*{Real World Graph}
+
+%
+%Begin: Sim1 - Real 
+\begin{center}
+\includegraphics[scale=0.8]{11InitialNode_Center_of_graph_1.png}
+\begin{figure}[H]
+\caption{Simulation1: Initial Node Center Of Graph }
+\end{figure}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.8]{11InitialNode_Center_of_graph_2.png}
+\begin{figure}[H]
+\caption{Simulation1: Initial Node Center Of Graph - Statistics}
+\end{figure}
+\end{center}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\subf{\includegraphics[width=60mm]{11MinDegree_Centrality_source_node_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{11MinDegree_Centrality_source_node_2.png}}
+     {}
+\\
+\hline
+\subf{\includegraphics[width=60mm]{11MaxDegree_Centrality_source_node_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{11MaxDegree_Centrality_source_node_2.png}}
+     {}
+\\
+\hline
+\end{tabular}
+\caption{Simulation 1: Max and Min Degree Centrality SourceNode}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\subf{\includegraphics[width=60mm]{11MaxBetweeness_centrality_sourcenode_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{11MaxBetweeness_centrality_sourcenode_2.png}}
+     {}
+\\
+\hline
+\subf{\includegraphics[width=60mm]{11MinBetweeness_centrality_sourcenode_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{11MinBetweeness_centrality_sourcenode_2.png}}
+     {}
+\\
+\hline
+\end{tabular}
+\caption{Simulation 1: Max and Min Betweenness Centrality SourceNode}
+\end{figure}
+
+%End: Sim1 - Real 
+
+%Begin: Sim2 - Real 
+\begin{center}
+\includegraphics[scale=0.8]{InitialNode_Center_of_graph_1.png}
+\begin{figure}[H]
+\caption{Simulation2: Initial Node Center Of Graph }
+\end{figure}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.8]{InitialNode_Center_of_graph_2.png}
+\begin{figure}[H]
+\caption{Simulation2: Initial Node Center Of Graph - Statistics}
+\end{figure}
+\end{center}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\subf{\includegraphics[width=60mm]{MinDegree_Centrality_source_node_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{MinDegree_Centrality_source_node_2.png}}
+     {}
+\\
+\hline
+\subf{\includegraphics[width=60mm]{MaxDegree_Centrality_source_node_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{MaxDegree_Centrality_source_node_2.png}}
+     {}
+\\
+\hline
+\end{tabular}
+\caption{Simulation 2: Max and Min Degree Centrality SourceNode}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\subf{\includegraphics[width=60mm]{MaxBetweeness_centrality_sourcenode_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{MaxBetweeness_centrality_sourcenode_2.png}}
+     {}
+\\
+\hline
+\subf{\includegraphics[width=60mm]{MinBetweeness_centrality_sourcenode_1.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{MinBetweeness_centrality_sourcenode_2.png}}
+     {}
+\\
+\hline
+\end{tabular}
+\caption{Simulation 2: Max and Min Betweenness Centrality SourceNode}
+\end{figure}
+
+%End: Sim2 - Real 
+
+\section*{Simulation 2}
+\subsection*{Erdos-Renyi Graphs}
+
+
+\begin{table}[H]
+\centering
+\caption{Simulation 2: Erdos Renyi Graph properties for pn = 0.1, 0.3, 0.5, 0.9}
+\label{my-label}
+\resizebox{\textwidth}{!}{\begin{tabular}{c|c|c|c|c|c|c|c|c}
+\hline
+index & pn & order & size & density & cluster coefficient &diameter & nodes deg $\geq$ n & largest component\\ \hline
+0& 1& 143& 103& 0.010144784792672116& 0.008857808857808859& inf& 0& 81\\ \hline
+ 1& 3& 143& 310& 0.030532847434255887& 0.017199467199467203& inf& 0& 141\\ \hline
+ 2& 5& 143& 530& 0.052201319806953611& 0.045021276314982595& 5& 12& 143\\ \hline
+ 3& 7& 143& 734& 0.072293903279818772& 0.07440109217101569& 4& 49& 143\\ \hline
+ 4& 9& 143& 889& 0.087560326996946714& 0.09322985284361361& 4& 86& 143\\ \hline
+ 5& 11& 143& 1162& 0.1144489313503398& 0.11609641591068731& 3& 128& 143\\ \hline
+\end{tabular}}
+\end{table}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\subf{\includegraphics[width=60mm]{plotdie01.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{plotdie03.png}}
+     {}
+\\
+\hline
+\subf{\includegraphics[width=60mm]{plotdie05.png}}
+     {}
+&
+\subf{\includegraphics[width=60mm]{plotdie09.png}}
+     {}
+\\
+\hline
+\end{tabular}
+\caption{Simulation 2: Plotting Node States for Erdos Renyi Graphs for pn = 0.1, 0.3, 0.5, 0.9}
 \end{figure}
 
 \subsubsection*{Real Airport Graph and subgraphs}
 
 
+
+
 \begin{center}
-\includegraphics[width=13.7cm, height=8.2cm]{sublowestedgewsim1.png}
-\begin{figure}[!h]
-\caption{Here the caption.}
+\includegraphics[scale=0.8]{realworldplotsim2.png}
+\begin{figure}[H]
+\caption{Simulation 2: Real-world airport graph properties}
 \end{figure}
 \end{center}
 
-
-
-\subsection*{Simulation 2}
-\subsubsection*{Erdos-Renyi Graphs}
-
-
-\begin{table}[h]
-\centering
-\caption{My caption}
-\label{my-label}
-\resizebox{\textwidth}{!}{\begin{tabular}{c|c|c|c|c|c|c|c|c}
-\hline
-index & pn & order & size & density & cluster coefficient &diameter & nodes deg $\geq$ n & largest component \\ \hline
-0& 1& 143& 92& 0.0090613611740372312& 0.0& inf& 0& 57\\ \hline
-1& 3& 143& 306& 0.030138875209297745& 0.0365028910483456& inf& 1& 141\\ \hline
-2& 5& 143& 510& 0.050231458682162909& 0.03737385380742022& 5& 9& 143\\ \hline
-3& 7& 143& 731& 0.071998424111100162& 0.06340691850770003& 4& 45& 143\\ \hline
-4& 9& 143& 871& 0.085787451984635082& 0.07962630387817257& 4& 82& 143\\ \hline
-5& 11& 143& 1156& 0.1138579730129026& 0.11439760465431766& 3& 126& 143\\ \hline
-\end{tabular}}
-\end{table}
-
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-\subf{\includegraphics[width=60mm]{graphdie01.png}}
+\subf{\includegraphics[width=60mm]{largestedgesim2.png}}
      {}
 &
-\subf{\includegraphics[width=60mm]{graphdie03.png}}
+\subf{\includegraphics[width=60mm]{lowestedgesim2.png}}
      {}
 \\
 \hline
-\subf{\includegraphics[width=60mm]{graphdie05.png}}
+\subf{\includegraphics[width=60mm]{largestsim2.png}}
      {}
 &
-\subf{\includegraphics[width=60mm]{graphdie09.png}}
+\subf{\includegraphics[width=60mm]{minspantreesim2.png}}
      {}
 \\
 \hline
 \end{tabular}
-\caption{}
+\caption{Simulation 2: Plotting Node States for Erdos Renyi Graphs for pn = 0.1, 0.3, 0.5, 0.9}
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{ploterdie01.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{ploterdie03.png}}
-     {}
-\\
-\hline
-\subf{\includegraphics[width=60mm]{ploterdie05.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{ploterdie09.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{}
-\end{figure}
 
-\subsection*{Simulation 3}
-
-\begin{table}[h]
-\centering
-\caption{My caption}
-\label{my-label}
-\resizebox{\textwidth}{!}{\begin{tabular}{c|c|c|c|c|c|c|c|c}
-\hline
-index & pn & order & size & density & cluster coefficient &diameter & nodes deg $\geq$ n & largest component \\ \hline
-0& 1& 143& 91& 0.0089628681177976958& 0.002564102564102564& inf& 0& 40\\ \hline
-1& 3& 143& 298& 0.029350930759381465& 0.01908091908091909& inf& 0& 141\\ \hline
-2& 5& 143& 501& 0.049345021176007094& 0.041219347862704495& 5& 4& 143\\ \hline
-3& 7& 143& 710& 0.069930069930069935& 0.07645401926561934& 4& 36& 143\\ \hline
-4& 9& 143& 892& 0.087855806165665323& 0.09174894803128791& 4& 85& 143\\ \hline
-5& 11& 143& 1103& 0.10863784103220724& 0.10304055495417155& 3& 125& 143\\ \hline
-\end{tabular}}
-\end{table}
-
-\subsubsection*{Erdos-Renyi Graphs}
-\begin{figure}[h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{graphrec01.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{graphrec03.png}}
-     {}
-\\
-\hline
-\subf{\includegraphics[width=60mm]{graphrec05.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{graphrec09.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{plotrec01.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{plotrec03.png}}
-     {}
-\\
-\hline
-\subf{\includegraphics[width=60mm]{plotrec05.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{plotrec09.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{}
-\end{figure}
+\subsection*{Source Node Centrality}
+\subsubsection*{Erdos-Renyi Graph with p = ??}
+\subsubsection*{Real World Graph}
 
 \end{document}
