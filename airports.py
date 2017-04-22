@@ -19,29 +19,25 @@ import heapq
 from collections import defaultdict
 
 
-
-
-
-
-def infection_init(G,init):
+def infection_init(G,init): #initiate the state and color of node
     """Make a graph with some infected nodes."""
     for u in G.nodes():
-        G.node[u]["state"] = 0
+        G.node[u]["state"] = 0 #Susceptible nodes
         G.node[u]["color"] = 'green'
         
-    G.node[init]["state"] = 1
+    G.node[init]["state"] = 1 #Initial infected node
     G.node[init]["color"] = 'yellow'
 
             
 
-def step(G):
+def step(G): #Running time step, call infection_update to get changes to be applied to the state of nodes
     """Given a graph G, run one time-step."""
     new_state = {}
-    for u, d in G.nodes(data=True):
+    for u, d in G.nodes(data=True): #get new state for each node
         new_state[u] = infection_update(d["state"],
                                        ((G.node[u2]["state"],G.edge[u][u2]['weight']) for u2 in G.neighbors(u)))
         
-    for u in G.nodes():
+    for u in G.nodes(): 
         G.node[u]["state"] = new_state[u]
         if G.node[u]["state"] < 0 :        #if the nodes is dead
             G.node[u]["color"] = 'red'     #set the node colour to red
@@ -73,7 +69,7 @@ def infection_update(s1, ss_w):
     return 0
     
                    
-def normalize_edge_weight(G):
+def normalize_edge_weight(G): #normalise edge weights
     mx_weight =0
     
     for (u,v,d) in G.edges(data=True):   # get the maximum edge weight
@@ -85,27 +81,25 @@ def normalize_edge_weight(G):
          
     return G
     
-def run(G,simulation):    
+def run(G,simulation): #run simulation   
     
     pos=nx.spring_layout(G)
     
-    if simulation == "random":    
+    if simulation == "random": #simulation using a random node as initial infected node    
         init = random.choice(G.nodes())
-    elif simulation == "node_deg":
+    elif simulation == "node_deg": #simulation using initial infected node with deg > value
         deg = G.degree()
         init = random.choice([n for n in deg if deg[n] > large_airports])
     else:
-        init = simulation
+        init = simulation #simulate using node provided as parameter
         
 
-    infection_init(G,init)
+    infection_init(G,init) #initial G with initial states
     
     print("Source Airport : ", init)
     print("Airport closeness centrality: ", nx.closeness_centrality(G,init))
     print("Airport clustering: ", nx.clustering(G,init))
 #    print("Airport eccentricity: ", nx.eccentricity(G,init))
-
-    Gpast = 0    
 
     w = nsteps #creating a matrix with % of infected, susceptible, recovered to plot 
     h = 4
@@ -121,12 +115,12 @@ def run(G,simulation):
         pdead = sum(G.node[i]["state"] < 0 for i in G.nodes()) / nx.number_of_nodes(G)
         print("Step:%2d, psusceptible: %.2f  , palive: %.2f , pInfected: %.2f , pRecovered: %.2f, pDead: %.2f" % (i,psus, palive, pinf, prec,pdead))
         
-        stats_matrix[i][0] = psus
+        stats_matrix[i][0] = psus #append matrix
         stats_matrix[i][1] = pinf
         stats_matrix[i][2] = prec
         stats_matrix[i][3] = pdead
 
-        viz(G,pos) 
+        viz(G,pos) #Visualise graph at each time step
         
         
      
@@ -134,9 +128,7 @@ def run(G,simulation):
     
     return G, init, stats_matrix
     
-
-    
-def viz(G,pos):   
+def viz(G,pos):   #Function to visualise graph at each time step
     node_colors = []
     edge_colors = []
 
@@ -172,12 +164,12 @@ def viz(G,pos):
     plt.show()
 
     
-def real_world_airport_graph(nodes, edges):
+def real_world_airport_graph(nodes, edges): #.txt and .csv airport data to graph 
     """ This function creates a graph using a database of aiports and their associated routes.
     
     Airports are represented by nodes and routes by edges."""
     
-    G = nx.Graph()
+    G = nx.Graph() #initiate graph
     
     duplicate_count = 0
     edge_count = 0 
@@ -197,19 +189,17 @@ def real_world_airport_graph(nodes, edges):
                 #print(row[11])
     with open(edges, 'r', encoding="utf-8") as f:
         for line in f.readlines():
-            entries = line.replace('"',"").rstrip().split(",")
-            if entries[2] in USairports:
-                if entries[4] in USairports:
+            row = line.replace('"',"").rstrip().split(",")
+            if row[2] in USairports:
+                if row[4] in USairports:
                     try:
-                        if G.has_edge((entries[2]),(entries[4])):
+                        if G.has_edge((row[2]),(row[4])):
                             duplicate_count += 1
                         else:
                             if line_num > 1:
-                                vertex1 = (entries[2])
-                                vertex2 = (entries[4])
-                                #print((entries[2],entries[4]))
-                                #print((entries[3],entries[5]))
-                                edge_weight = (int(entries[3]) + int(entries[5]))/2
+                                vertex1 = (row[2])
+                                vertex2 = (row[4])
+                                edge_weight = (int(row[3]) + int(row[5]))/2
                                 G.add_edge(vertex1, vertex2 ,weight= edge_weight)
                                 edge_count += 1
                     except ValueError:
@@ -219,7 +209,7 @@ def real_world_airport_graph(nodes, edges):
                     line_num += 1
     return G
     
-def stat(G,init):
+def stat(G,init): #Return statistics dic
     stats = {}
     stats['Initial Node'] = init
     stats['Node Degree'] = nx.degree(G,init)
@@ -250,7 +240,7 @@ def stat(G,init):
 
     
     
-def largest_connected_component(G):
+def largest_connected_component(G): #return largest connected components
     largest = max(nx.connected_component_subgraphs(G), key=len)
     return largest
     
@@ -258,7 +248,7 @@ def nCk(n, k):
     # n choose k
     return scipy.misc.comb(n, k)
     
-def graph_properties(G):
+def graph_properties(G): #return graph properties
     n = G.order()
     m = G.size()
     d = G.degree()
@@ -278,41 +268,23 @@ def graph_properties(G):
 #        nx.average_shortest_path_length(G)
     )
     
-def short_path_test(G,n):
-    SP = nx.single_source_dijkstra_path_length(G, n) 
-    
-    key, value = max(SP.items(), key=lambda x:x[1])    
-    
-    print("Longest Shortest Path,", key, "of length ", value)
-    
-    status = G.node[key]['color']
-
-    if status == 'green':
-        print("not infected")
-    elif status == 'blue':
-        print("recovered")
-    else:
-        print("dead")
-    
-    return status
-    
-def max_btcentrality(G):
+def max_btcentrality(G): #return node with max betweenness centrality
     bcent = nx.betweenness_centrality(G)
     return max(bcent.items(), key=lambda x:x[1:])
     
-def min_btcentrality(G):
+def min_btcentrality(G):#return node with min betweenness centrality
     bcent = nx.betweenness_centrality(G)
     return min(bcent.items(), key=lambda x:x[1:])   
     
-def max_degcentrality(G):
+def max_degcentrality(G): #return node with max degree centrality
     degcent = nx.degree_centrality(G)
     return max(degcent.items(), key=lambda x:x[1:]) 
     
-def min_degcentrality(G):
+def min_degcentrality(G):#return node with min degree centrality
     degcent = nx.degree_centrality(G)
     return min(degcent.items(), key=lambda x:x[1:])    
 
-def gDiameterTest(n,nsteps):
+def gDiameterTest(n,nsteps): #test a range of erdos_renyi graphs
     diameterList = [["pn"],["diameter"],["inftime"],["rectime"],["deadtime"]]
     statlist = []
 
@@ -363,7 +335,7 @@ def gDiameterTest(n,nsteps):
 
     return diameterList, statlist
     
-def subgraph(G,nsteps):
+def subgraph(G,nsteps): #Groduce subgraphs
     
     "subgraph with only edges of weight >0.75"
     SG_largeweight = nx.Graph([(u,v,d) for u,v,d in Greal.edges(data=True) if d['weight']>0.75] )
@@ -390,7 +362,7 @@ def subgraph(G,nsteps):
     return SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan
 
     
-def resultssubgraph(G,nsteps,sim_str):
+def resultssubgraph(G,nsteps,sim_str): #return statistics for subgraphs
     
     subgraphlist = [["diameter"],["inftime"],["rectime"],["deadtime"]]
     
@@ -431,7 +403,7 @@ def resultssubgraph(G,nsteps,sim_str):
 
     return subgraphlist, statistics
             
-def testingPrint():
+def testingPrint(): #range of tests for each simulation
     print("---")
 
     print("Testing on graphs with increasing probability of edge existence between nodes" )    
@@ -505,7 +477,7 @@ def testingPrint():
     
 
 
-def plotting(matrix, nsteps, sim_str):
+def plotting(matrix, nsteps, sim_str): #plot percentage of nodes in eahc state over time
     plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
     plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
     plt.plot([i for i in range(len(matrix))],[matrix[i][2] for i in range(len(matrix))],'--bs',label = '% Recovered')
