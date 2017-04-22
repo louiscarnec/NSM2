@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.6)  10 APR 2017 18:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.6)  22 APR 2017 13:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -24,13 +24,9 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks14
-)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
@@ -52,13 +48,7 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
-))
-\Gin@req@height=\dimen103
-\Gin@req@width=\dimen104
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
+)))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/capt-of/capt-of.sty
 Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
 )
@@ -79,13 +69,18 @@ Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen105
-\captionmargin@=\dimen106
-\captionwidth=\dimen107
-\caption@tempdima=\dimen108
-\caption@indent=\dimen109
-\caption@parindent=\dimen110
-\caption@hangindent=\dimen111
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\captionmargin=\dimen103
+\captionmargin@=\dimen104
+\captionwidth=\dimen105
+\caption@tempdima=\dimen106
+\caption@indent=\dimen107
+\caption@parindent=\dimen108
+\caption@hangindent=\dimen109
 )
 \c@ContinuedFloat=\count88
 )
@@ -100,8 +95,8 @@ Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
 \pgfutil@everybye=\toks15
-\pgfutil@tempdima=\dimen112
-\pgfutil@tempdimb=\dimen113
+\pgfutil@tempdima=\dimen110
+\pgfutil@tempdimb=\dimen111
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
@@ -115,6 +110,11 @@ Package: pgfrcs 2013/12/20 v3.0.0 (rcs-revision 1.28)
 ))
 Package: pgf 2013/12/18 v3.0.0 (rcs-revision 1.14)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2013/11/30 v3.0.0 (rcs-revision 1.47)
@@ -706,9 +706,23 @@ Package: translator 2010/06/12 ver 1.10
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/beamer/translator/translator-lang
 uage-mappings.tex)))
-(/usr/local/texlive/2015/texmf-dist/tex/latex/eurosym/eurosym.sty
-Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
-\@eurobox=\box59
+(/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count155
+\float@exts=\toks30
+\float@box=\box59
+\@float@everytoks=\toks31
+\@floatcapt=\box60
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+\c@KVtest=\count156
+\sf@farskip=\skip64
+\sf@captopadj=\dimen208
+\sf@capskip=\skip65
+\sf@nearskip=\skip66
+\sf@top=\skip67
+\sf@bottom=\skip68
 )
 (/usr/local/texlive/2015/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryquotes.code.tex
@@ -742,10 +756,10 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/local/texlive/2015/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks30
-\XKV@tempa@toks=\toks31
+\XKV@toks=\toks32
+\XKV@tempa@toks=\toks33
 )
-\XKV@depth=\count155
+\XKV@depth=\count157
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/currfile/currfile.sty
@@ -768,7 +782,7 @@ Package etexcmds Info: Could not find \expanded.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/filehook/filehook.sty
 Package: filehook 2011/10/12 v0.5d Hooks for input files
 )
-\c@currfiledepth=\count156
+\c@currfiledepth=\count158
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/gincltex/gincltex.sty
 (/usr/local/texlive/2015/texmf-dist/tex/latex/svn-prov/svn-prov.sty
@@ -788,41 +802,41 @@ Package: trimclip 2012/05/16 v1.0 Trim and clip general TeX material
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/collectbox/collectbox.sty
 Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
-\collectedbox=\box60
+\collectedbox=\box61
 )
-\tc@llx=\dimen208
-\tc@lly=\dimen209
-\tc@urx=\dimen210
-\tc@ury=\dimen211
+\tc@llx=\dimen209
+\tc@lly=\dimen210
+\tc@urx=\dimen211
+\tc@ury=\dimen212
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2012/05/13 v1.0 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen212
-\adjbox@Height=\dimen213
-\adjbox@Depth=\dimen214
-\adjbox@Totalheight=\dimen215
+\adjbox@Width=\dimen213
+\adjbox@Height=\dimen214
+\adjbox@Depth=\dimen215
+\adjbox@Totalheight=\dimen216
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2011/09/13 v1.0 Conditionals for odd/even page detection
-\c@checkoddpage=\count157
+\c@checkoddpage=\count159
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box61
-\sift@deathcycles=\count158
-\@vwid@loff=\dimen216
-\@vwid@roff=\dimen217
+\@vwid@box=\box62
+\sift@deathcycles=\count160
+\@vwid@loff=\dimen217
+\@vwid@roff=\dimen218
 ))
-\gincltex@box=\box62
+\gincltex@box=\box63
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/filemod/filemod-expmin.sty
 Package: filemod-expmin 2011/09/19 v1.2 Get and compare file modification times
  (expandable; minimal)
 ))
 (/usr/local/texlive/2015/texmf-dist/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen218
+\bigstrutjot=\dimen219
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
@@ -831,159 +845,24 @@ Package: geometry 2010/09/12 v5.6 Page Geometry
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-\Gm@cnth=\count159
-\Gm@cntv=\count160
-\c@Gm@tempcnt=\count161
-\Gm@bindingoffset=\dimen219
-\Gm@wd@mp=\dimen220
-\Gm@odd@mp=\dimen221
-\Gm@even@mp=\dimen222
-\Gm@layoutwidth=\dimen223
-\Gm@layoutheight=\dimen224
-\Gm@layouthoffset=\dimen225
-\Gm@layoutvoffset=\dimen226
-\Gm@dimlist=\toks32
+\Gm@cnth=\count161
+\Gm@cntv=\count162
+\c@Gm@tempcnt=\count163
+\Gm@bindingoffset=\dimen220
+\Gm@wd@mp=\dimen221
+\Gm@odd@mp=\dimen222
+\Gm@even@mp=\dimen223
+\Gm@layoutwidth=\dimen224
+\Gm@layoutheight=\dimen225
+\Gm@layouthoffset=\dimen226
+\Gm@layoutvoffset=\dimen227
+\Gm@dimlist=\toks34
 )
-LaTeX Info: Redefining \officialeuro on input line 24.
+(./NSM_2.aux
 
-(./NSM_2.aux)
-\openout1 = `NSM_2.aux'.
+./NSM_2.aux:20: LaTeX Error: Missing \begin{document}.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count162
-\scratchdimen=\dimen227
-\scratchbox=\box63
-\nofMPsegments=\count163
-\nofMParguments=\count164
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count165
-\MPscratchDim=\dimen228
-\MPnumerator=\count166
-\makeMPintoPDFobject=\count167
-\everyMPtoPDFconversion=\toks34
-) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
-
-ABD: EveryShipout initializing macros
-(/usr/local/texlive/2015/texmf-dist/tex/latex/beamer/translator/dicts/translato
-r-basic-dictionary/translator-basic-dictionary-English.dict
-Dictionary: translator-basic-dictionary, Language: English 
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
-File: siunitx-abbreviations.cfg 2015/01/21 v2.6e siunitx: Abbreviated units
-)
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
-* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=418.25368pt
-* \textheight=591.5302pt
-* \oddsidemargin=17.3571pt
-* \evensidemargin=17.3571pt
-* \topmargin=-7.86334pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=11.0pt
-* \footskip=30.0pt
-* \marginparwidth=50.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-\c__siunitx_mathsf_int=\count168
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 27.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 27.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 27.
-\c__siunitx_mathtt_int=\count169
-[1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 25.16252pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[1]
-No file NSM_2.bbl.
-(./NSM_2.aux) ) 
-Here is how much of TeX's memory you used:
- 23244 strings out of 493089
- 493316 string characters out of 6134842
- 475700 words of memory out of 5000000
- 26369 multiletter control sequences out of 15000+600000
- 9945 words of font info for 36 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 55i,11n,67p,10392b,378s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmcsc10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ti12.pfb>
-Output written on NSM_2.pdf (2 pages, 62154 bytes).
-PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
- 24 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
