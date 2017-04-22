@@ -1,4 +1,5 @@
 \documentclass[a4paper,11pt]{article}
+\usepackage{graphicx}
 \usepackage{lscape}
 \usepackage{capt-of}
 \usepackage{fancyhdr}
@@ -8,21 +9,24 @@
 \usetikzlibrary{arrows.meta}
 \usepackage{enumerate}
 \usepackage{siunitx}
-\usepackage{float}
-\usepackage[caption = false]{subfig}
-\usepackage{graphicx}
-\usepackage{subfig}
+\usepackage{eurosym}
 \usetikzlibrary{quotes,angles,positioning}
 \usepackage{standalone}
 \usepackage{multirow}
 
-
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 \usepackage{geometry} % to change the page dimensions
 \geometry{a4paper} 
 \pagestyle{fancy}
 \lhead{}
-\rhead{Louis Carnec \\ 15204934}
+\rhead{}
 \renewcommand{\headrulewidth}{0pt}
 \setlength\parindent{0pt}
 \usepackage{amstext} % for \text
@@ -30,13 +34,6 @@
   \ifmmode\expandafter\text\fi
   {\fontencoding{U}\fontfamily{eurosym}\selectfont e}}
 \setlength{\parindent}{5ex}
-
-  
-\newcommand{\subf}[2]{%
-  {\small\begin{tabular}[t]{@{}c@{}}
-  #1\\#2
-  \end{tabular}}%
-}  
 
 \begin{document}
 
@@ -95,6 +92,12 @@ Adedayo \textsc{Adelowokan}
  
 %----------------------------------------------------------------------------------------
 
+{
+
+	 \vspace{1.5in}\textmd{\textbf{Master of Science (Business Analytics)}}\\
+     \large{\textbf{UCD Michael Smurfit Graduate Business School }}\\
+      \textmd{\textbf{2016-2017}}\\
+ }     
 \vfill % Fill the rest of the page with whitespace
 
 \end{titlepage}
@@ -113,7 +116,7 @@ In this simulation we will model the spread of disease through world airports ne
 
 \section{Describe briefly your choice of graph model and how it corresponds to the real-world phenomenon, e.g. your choice of directed versus undirected edges, edge weights, allowing or disallowing self-loops, etc.}
 
-Our real-world network graph is undirected where nodes represent airports and edges are routes.We used open source data from \href{http://openflights.org}{openflights.org} along with population of the cities. Redundant edges and unconnected nodes are removed from the graph. Average of population of two airpots is calculated and normalised and assigned as edge weight. Airports where both origin and destination are with-in USA are used, and others are removed.
+Our real-world network graph is undirected where nodes represent airports and edges are routes.We used open source data from \href{http://openflights.org}{openflights.org} along with population of the cities from \href{https://unstats.un.org/unsd/demographic/products/dyb/City_Page.htm}{unstats.un.org}. Redundant edges and unconnected nodes are removed from the graph. Average of population of two cities where airpots are located is calculated and normalised before assigning it as edge weight. Airports where both origin and destination are with-in USA are used, and others are removed.
 
 
 
@@ -123,7 +126,7 @@ Our real-world network graph is undirected where nodes represent airports and ed
 
 To simulate the propagation of a disease through the airports network, we have selected four states - susceptible, infected, recovered and  removed. Initial state of all nodes is susceptible and any node can be infected. There is no incubation period, a node once infected can infect neighbours with a probability of edge weight. An infected node recovers with a random probability which decreases as the number of steps increase. Alternatively a node with infection is removed from the network indefinitely. A node once infected and recovered is immune to infection and not susceptible any more.
 
-Nodes are coloured based on the status - green is susceptible, yellow is infected, blue is recovered and red is removed/dead. Figure \ref{fig:M1} below has 5 blocks each one represents the status of nodes at one time step. Status of nodes in step 1 is shown by block \textit{(a)} , where node A is infected and is yellow , all the other nodes green showing that they are susceptible. In step 2 nodes B and D are infected with probabilities WAB and WDA respectively, as they are the neighbours of node A. Step 3 shows that all nodes are infected and in 4th time step, nodes B and D are red showing that they are dead/removed. Node C is blue in the last step representing that it has recovered from infection.
+Nodes are coloured based on the status - green is susceptible, yellow is infected, blue is recovered and red is removed/dead. Figure \ref{fig:M1} below has 5 blocks each one represents the status of nodes at one time step. Status of nodes in step 1 is shown by block \textit{(a)} , where node A is infected and is yellow , all the other nodes green showing that they are susceptible. In step 2 nodes B and D are infected with probabilities ${\emph{w} _{AB}}$  and ${\emph{w}_{DA}}$ respectively, as they are the neighbours of node A. Step 3 shows that all nodes are infected and in 4\textsuperscript{th} time step, nodes B and D are red showing that they are dead/removed indefinitely. Node C is blue in the last step representing that it has recovered from infection.
 
 
 \begin{figure}[htbp]
@@ -300,12 +303,6 @@ probability of country with disease of spreading to other countries weighted on 
 probability increases at each timestep to account for fact that disease spreading within the country
 
 
-<<<<<<< Updated upstream
-=======
-
-
-\section{Read world phenomenon : Spread of disease through airport networks}
->>>>>>> Stashed changes
 
 Graph property tests - Tables of results
 
@@ -326,139 +323,9 @@ Discuss the results
 
 Statistics
 
-\section{Describe briefly your choice of graph model and how it corresponds to the real-world phenomenon, e.g. your choice of directed versus undirected edges, edge weights, allowing or disallowing self-loops, etc.}
-
-Edge weights - average of two nodes(airports)
-
-Multiple routes between any two nodes are removed.
-
-
-Airports with no flights are removed.
-
-Only airports within USA are used.
-
-\section{With the aid of a diagram, describe the simulation rules, e.g. how agents change state and what causes them to send messages.}
-
-Write about SIR model - Susceptible, Infected, Recovered and Dead.
-
-
-How the first node/nodes are infected - initialised with probability
-
-
-Time Steps
-
-
- Node Colour - green : Susceptible, yellow: infected, white: recovered, red: dead
-
-Edges with higher weight have higher probability of spreading the disease.
-
-Recovered from Infection are not susceptible again
-
-NODE vs EDGE: infected getting on a given route (edge) vs infected in a given location (node) - edge vs node centrality
-
-\section{Program your simulation in Python.}
-
-\section{State one or more simulation properties which you wish to investigate and which graph properties you hypothesize they may depend on.}
-
-radius
-
-
-diameter
-
-
-centrality
-
-
-order
-
-\section{Carry out experiments to measure these properties in different types and sizes of graph (at least one real-world graph, and at least one scalable graph model such as the Erdos-Renyi random graph model, at multiple sizes). Present a table of data showing your results.}
-
-
-Graph property tests - Tables of results
-
-Results Diagrams/figures from Python code
-
-
-Scalability  test results along with tables and figures
-
-
-\section{State your conclusions, based on your data.}
-
-Discuss the results
-
-
-Statistics
-
-\section*{Appendix}
-\subsection*{Simulation 1}
-\subsubsection*{Erdos-Renyi Graphs}
-
-\begin{table}[h]
-\centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{|l|l|l|l|l|l|l|}
-\hline
-p             & 0.01 & 0.03 & 0.05 & 0.07 & 0.09 & 0.11 \\ \hline
-Diameter      & inf  & inf  & 5    & 4    & 4    & 3    \\ \hline
-Epidemic Step & None & None & None & 10   & 11   & 6    \\ \hline
-\end{tabular}
-\end{table}
 \clearpage
 
 \bibliographystyle{acm}
 \bibliography{NSM.bib}
-
-
-
-
-\begin{figure}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{ploter01.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{ploter03.png}}
-     {}
-\\
-\hline
-\subf{\includegraphics[width=60mm]{ploter05.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{ploter09.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{}
-\end{figure}
-
-\subsubsection*{Real Airport Graph and subgraphs}
-
-\subsection*{Simulation 2}
-\subsubsection*{Erdos-Renyi Graphs}
-\begin{figure}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{ploterdie01.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{ploterdie03.png}}
-     {}
-\\
-\hline
-\subf{\includegraphics[width=60mm]{ploterdie05.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{ploterdie09.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{}
-\end{figure}
-
 
 \end{document}
