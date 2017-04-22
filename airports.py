@@ -286,7 +286,7 @@ def min_degcentrality(G):#return node with min degree centrality
     degcent = nx.degree_centrality(G)
     return min(degcent.items(), key=lambda x:x[1:])    
 
-def gDiameterTest(n,nsteps): #test a range of erdos_renyi graphs
+def gDiameterTest(n,nsteps,simulationnumber): #test a range of erdos_renyi graphs
     diameterList = [["pn"],["diameter"],["inftime"],["rectime"],["deadtime"]]
     statlist = []
 
@@ -344,7 +344,7 @@ def gDiameterTest(n,nsteps): #test a range of erdos_renyi graphs
         diameterList[3].append(timerec)
         diameterList[4].append(timedead)
         
-        plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac))
+        plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac),simulationnumber)
         
         statlist.append(i)
         statlist.append(stat(G,init).items())
@@ -373,12 +373,13 @@ def subgraph(G,nsteps): #Groduce subgraphs
     
     "Minimum Spanning Tree"
     minspan = nx.minimum_spanning_tree(G)
+    
 
         
     return SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan
 
     
-def resultssubgraph(G,nsteps,sim_str): #return statistics for subgraphs
+def resultssubgraph(G,nsteps,sim_str,simulationnumber): #return statistics for subgraphs
     
     subgraphlist = [["diameter"],["inftime"],["rectime"],["deadtime"]]
     
@@ -416,16 +417,18 @@ def resultssubgraph(G,nsteps,sim_str): #return statistics for subgraphs
     subgraphlist[3].append(timedead) 
     
     statistics = stat(G,init)
+    #print(matrix)
+    plotting(matrix, nsteps, sim_str, simulationnumber)
 
-    return subgraphlist, statistics
+    return subgraphlist, graph_properties(G)
             
-def testingPrint(): #range of tests for each simulation
-    print("---")
-
-    print("Testing on graphs with increasing probability of edge existence between nodes" )    
-    Diameter_test_data, graphproperties = gDiameterTest(n,nsteps)
-    print(graphproperties)
-    print(Diameter_test_data)
+def testingPrint(simulationnumber): #range of tests for each simulation
+#    print("---")
+#
+#    print("Testing on graphs with increasing probability of edge existence between nodes" )    
+#    Diameter_test_data, graphproperties = gDiameterTest(n,nsteps)
+#    print(graphproperties)
+#    print(Diameter_test_data)
 #    print(stats)
 #    
 #    print("---")
@@ -433,23 +436,23 @@ def testingPrint(): #range of tests for each simulation
 #    G, init, matrix = run(Greal,'random')
 #    stat(G,init)
 #    
-#    print("Testing on subgraphs of the real-world airport graph")
-#    SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(Greal,nsteps)
-#    print("Subgraph of 20 largest edge weight")
-#    largwlist,stats = resultssubgraph(SG_largeweight,nsteps,"Subgraph 20 largest edge weights")
-#    print("Subgraph of 20 lowest edge weight")
-#    print(stats)
-#    lowwlist, stats = resultssubgraph(SG_lowweight,nsteps,"Subgraph 20 lowest edge weights")
-#    print("Subgraph of 20 largest degree centrality nodes")
-#    print(stats)
-#    top20list, stats = resultssubgraph(SG_top20DC,nsteps,"Subgraph 20 largest degree centrality nodes")
-#    print("Subgraph of 20 lowest degree centrality nodes")
-#    print(stats)
-#    low20list, stats = resultssubgraph(SG_low20DC,nsteps,"Subgraph 20 lowest degree centrality nodes")
-#    print("Minimum Spanning Tree")
-#    minspanlist, stats = resultssubgraph(minspan,nsteps,"Minimum Spanning Tree")
-#    print(stats)
-#
+    print("Testing on subgraphs of the real-world airport graph")
+    SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(Greal,nsteps)
+    print("Subgraph of 20 largest edge weight")
+    largwlist,stats = resultssubgraph(SG_largeweight,nsteps,"Subgraph largest edge weights",simulationnumber)
+    print("Subgraph of 20 lowest edge weight")
+    print(stats)
+    lowwlist, stats = resultssubgraph(SG_lowweight,nsteps,"Subgraph lowest edge weights",simulationnumber)
+    print("Subgraph of 20 largest degree centrality nodes")
+    print(stats)
+    top20list, stats = resultssubgraph(SG_top20DC,nsteps,"Subgraph 20 largest degree centrality nodes",simulationnumber)
+    print("Subgraph of 20 lowest degree centrality nodes")
+    print(stats)
+    low20list, stats = resultssubgraph(SG_low20DC,nsteps,"Subgraph 20 lowest degree centrality nodes",simulationnumber)
+    print("Minimum Spanning Tree")
+    minspanlist, stats = resultssubgraph(minspan,nsteps,"Minimum Spanning Tree",simulationnumber)
+    print(stats)
+
 #    print("---")
 #    
 #    print("Test using nodes with maximimum and minimum betweenness centrality")
@@ -495,11 +498,19 @@ def testingPrint(): #range of tests for each simulation
 #    
 
 
-def plotting(matrix, nsteps, sim_str): #plot percentage of nodes in eahc state over time
-    plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
-    plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
-    plt.plot([i for i in range(len(matrix))],[matrix[i][2] for i in range(len(matrix))],'--bs',label = '% Recovered')
-    plt.plot([i for i in range(len(matrix))],[matrix[i][3] for i in range(len(matrix))],'--ro',label = '% Closed/Dead')
+def plotting(matrix, nsteps, sim_str, simulationnumber): #plot percentage of nodes in eahc state over time
+    if simulationnumber == 'sim1':
+        plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
+        plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
+    elif simulationnumber == 'sim2':  
+        plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
+        plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
+        plt.plot([i for i in range(len(matrix))],[matrix[i][3] for i in range(len(matrix))],'--ro',label = '% Closed/Dead')
+    elif simulationnumber == 'sim3':  
+        plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
+        plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
+        plt.plot([i for i in range(len(matrix))],[matrix[i][3] for i in range(len(matrix))],'--ro',label = '% Closed/Dead')
+        plt.plot([i for i in range(len(matrix))],[matrix[i][2] for i in range(len(matrix))],'--bs',label = '% Recovered')
     plt.title(str(sim_str))
     plt.xlabel('Time Step')
     plt.ylabel('%')
@@ -540,7 +551,7 @@ if __name__ == "__main__":
     rp = 0 # probability of recovery 
     td = math.inf # td time-steps after infection, the individual dies
     
-    testingPrint()
+    testingPrint('sim1')
 
     "Simulation 2 - Airports can die and cannot recover"
     
@@ -548,14 +559,14 @@ if __name__ == "__main__":
     rp = 0 # probability of recovery 
     td = 4 # td time-steps after infection, the individual dies
 
-    testingPrint()
+    testingPrint('sim2')
 
     "Simulation 3 - Airports can die and recover"
     p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
     rp = 0.2 # probability of recovery 
     td = 4 # td time-steps after infection, the individual dies
 
-    testingPrint()
+    testingPrint('sim3')
     
 
    
