@@ -4,6 +4,26 @@
 Created on Mon Apr 10 13:07:13 2017
 
 @authors: Louis Carnec, Vijay Katta and Adedayo Adelowokan
+
+Description: This program simulates the spread of a disease through airport networks.
+It uses the US airports networks data provided in the flat file(along with this program) and also Erdos-Renyi graphs 
+with different edge existence probabilities) and initial infection nodes 
+(with different centrality measures) affect the spread of disease through the network. 
+
+
+Parameters: 
+    n =250 # number of nodes
+    pn = 0.01 # per-edge probability of existing
+    i = 1 # number of nodes initially infected
+    nsteps = 25 # how many time-steps to run
+    large_airports = 50 # picking the initial edpidemic spreading airport to have degree greater than n
+    simulation_type = 'sim2' # sim1      # sim1- nodes are infected but don't die. sim2 - infected nodes can die 
+    graph_type = 'real' #'generated' # 'real'    # graph used for simulation 
+    
+FlatFiles Used:
+    1.sub_us_airports.csv
+    2.edges.txt
+    
 """
 
 import networkx as nx
@@ -20,6 +40,18 @@ from collections import defaultdict
 from tabulate import tabulate
 
 
+
+def normalize_edge_weight(G): #normalise edge weights
+    mx_weight =0
+    
+    for (u,v,d) in G.edges(data=True):   # get the maximum edge weight
+        if d['weight'] > mx_weight:
+            mx_weight =d['weight'] 
+    
+    for (u,v,d) in G.edges(data=True):   
+         d['weight'] = (d['weight'] / mx_weight) # divide each edge by the maximum edge weight
+         
+    return G
 
 def infection_init(G,init): #initiate the state and color of node
     """Make a graph with some infected nodes."""
@@ -42,15 +74,7 @@ def step(G): #Running time step, call infection_update to get changes to be appl
     for u in G.nodes(): 
         G.node[u]["state"] = new_state[u]
         if G.node[u]["state"] < 0 :        #if the nodes is dead
-            G.node[u]["color"] = 'red'     #set the node colour to red
-    
-    #recover from infection
-    for u in G.nodes():
-        if G.node[u]["state"] > 0 :        #if the nodes is infected
-            if random.random() < rp/G.node[u]["state"] :
-                G.node[u]["state"] = 0     # reset to susceptible
-                G.node[u]["color"] = 'blue'     #set the node colour to blue
- 
+            G.node[u]["color"] = 'red'     #set the node colour to red 
                 
 def infection_update(s1, ss_w):
     """Update the state of node s1, given the states of its neighbours ss."""   
@@ -71,17 +95,6 @@ def infection_update(s1, ss_w):
     return 0
     
                    
-def normalize_edge_weight(G): #normalise edge weights
-    mx_weight =0
-    
-    for (u,v,d) in G.edges(data=True):   # get the maximum edge weight
-        if d['weight'] > mx_weight:
-            mx_weight =d['weight'] 
-    
-    for (u,v,d) in G.edges(data=True):   
-         d['weight'] = (d['weight'] / mx_weight) # divide each edge by the maximum edge weight
-         
-    return G
     
 def run(G,simulation): #run simulation   
     
@@ -98,10 +111,6 @@ def run(G,simulation): #run simulation
 
     infection_init(G,init) #initial G with initial states
     
-#    print("Source Airport : ", init)
-#    print("Airport closeness centrality: ", nx.closeness_centrality(G,init))
-#    print("Airport clustering: ", nx.clustering(G,init))
-#    print("Airport eccentricity: ", nx.eccentricity(G,init))
     pinf_all_step = math.inf
     pdead_all_step = math.inf
     pinf_all_step_check =0
@@ -118,7 +127,6 @@ def run(G,simulation): #run simulation
         pinf = sum(G.node[i]["state"] > 0 for i in G.nodes()) / nx.number_of_nodes(G)
         prec = sum(G.node[i]["color"] > 'blue' for i in G.nodes()) / nx.number_of_nodes(G)
         pdead = sum(G.node[i]["state"] < 0 for i in G.nodes()) / nx.number_of_nodes(G)
-#        print("Step:%2d, psusceptible: %.2f  , palive: %.2f , pInfected: %.2f , pRecovered: %.2f, pDead: %.2f" % (i,psus, palive, pinf, prec,pdead))
         
         stats_matrix[i][0] = psus #append matrix
         stats_matrix[i][1] = pinf
@@ -132,7 +140,7 @@ def run(G,simulation): #run simulation
             pdead_all_step = i
             pdead_all_step_check = 1
             
-    #viz(G,pos) #Visualise graph at each time step
+    viz(G,pos) #Visualise graph at each time step
         
         
      
@@ -306,7 +314,7 @@ def gDiameterTest(n,nsteps,simulationnumber): #test a range of erdos_renyi graph
     timerec = 0
     timedead = 0
     
-    p = [1,3,5,9]#[1,3,5,7,9,11] #1,3,5,9
+    p = [9]#[1,3,5,9] 
 
     w = 9 #creating a matrix with % of infected, susceptible, recovered to plot 
     h = len(p)
@@ -330,7 +338,7 @@ def gDiameterTest(n,nsteps,simulationnumber): #test a range of erdos_renyi graph
             diameter = math.inf
             
         G, init, matrix,pinf_all_step,pdead_all_step = run(G,'random')
-        
+
         for nstep in range(nsteps):
             if matrix[nstep][1] == 1.0:
                 timeinf = nstep
@@ -353,8 +361,8 @@ def gDiameterTest(n,nsteps,simulationnumber): #test a range of erdos_renyi graph
         diameterList[2].append(timeinf)
         diameterList[3].append(timerec)
         diameterList[4].append(timedead)
-        
-        #plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac),simulationnumber)
+
+        plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac),simulationnumber)
         #print("properties:",properties)
         statlist.append(i)
         statlist.append(stat(G,init).items())
@@ -428,52 +436,62 @@ def resultssubgraph(G,nsteps,sim_str,simulationnumber): #return statistics for s
     
     statistics = stat(G,init)
     #print(matrix)
-    #plotting(matrix, nsteps, sim_str, simulationnumber)
+    plotting(matrix, nsteps, sim_str, simulationnumber)
 
     return subgraphlist, graph_properties(G)
             
-def testingPrint(simulationnumber,graphtype): #range of tests for each simulation
+def Simulate(simulationnumber,graphtype): #range of tests for each simulation
 #    print("---")
-#
-    print("Testing on graphs with increasing probability of edge existence between nodes" )    
-    Diameter_test_data, graphproperties, ERG,pinf_all_step,pdead_all_step = gDiameterTest(n,nsteps,simulationnumber)
+        
+    if simulationnumber =='sim1':
+        if graphtype == 'real':
+            print("Simulation 1 - Airports Infected  : Using Real Airports Network Data")
+        elif graphtype == 'generated' :
+            print("Simulation 1 - Airports Infected : Using Erdos-Renyi generated graph")
+    elif simulationnumber =='sim2':
+        if graphtype == 'real':
+            print("Simulation 2 - Airports Closed  : Using Real Airports Network Data")
+        elif graphtype == 'generated' :
+            print("Simulation 2 - Airports Closed  : Using Erdos-Renyi generated graph")
 
+    
     if graphtype == 'generated' :
+        print("Testing on graphs with increasing probability of edge existence between nodes" )    
+        Diameter_test_data, graphproperties, ERG,pinf_all_step,pdead_all_step = gDiameterTest(n,nsteps,simulationnumber)
+
         air_graph = ERG
     else :
         air_graph = Greal    
     
-    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
+    #print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
     
-
-#    print(graphproperties)
-#    print(Diameter_test_data)
-#    print(stats)
-#    
-#    print("---")
-#    print("Testing on real-world Airport Graph")
-#    G, init, matrix ,pinf_all_step,pdead_all_step = run(air_graph,'random')
-#    stat(G,init)
-#    
-#    print("Testing on subgraphs of the real-world airport graph")
-#    SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(air_graph,nsteps)
-#  
-#    print("Subgraph of 20 largest edge weight")
-#    largwlist,stats = resultssubgraph(SG_largeweight,nsteps,"Subgraph largest edge weights",simulationnumber)
-#    
-#    print("Subgraph of 20 lowest edge weight")
-#    print(stats)
-#    
-#    lowwlist, stats = resultssubgraph(SG_lowweight,nsteps,"Subgraph lowest edge weights",simulationnumber)
-#    print("Subgraph of 20 largest degree centrality nodes")
-#    print(stats)
-#    top20list, stats = resultssubgraph(SG_top20DC,nsteps,"Subgraph 20 largest degree centrality nodes",simulationnumber)
-#    print("Subgraph of 20 lowest degree centrality nodes")
-#    print(stats)
-#    low20list, stats = resultssubgraph(SG_low20DC,nsteps,"Subgraph 20 lowest degree centrality nodes",simulationnumber)
-#    print("Minimum Spanning Tree")
-#    minspanlist, stats = resultssubgraph(minspan,nsteps,"Minimum Spanning Tree",simulationnumber)
-#    print(stats)
+    #Get subgraph with various properties if the graph is real
+    if graphtype == 'real' :
+            
+        print("---")
+        print("Testing on real-world Airport Graph")
+        G, init, matrix ,pinf_all_step,pdead_all_step = run(air_graph,'random')
+        stat(G,init)
+        
+        print("Testing on subgraphs of the real-world airport graph")
+        SG_largeweight, SG_lowweight, SG_top20DC, SG_low20DC, minspan = subgraph(air_graph,nsteps)
+      
+        print("Subgraph of 20 largest edge weight")
+        largwlist,stats = resultssubgraph(SG_largeweight,nsteps,"Subgraph largest edge weights",simulationnumber)
+        
+        print("Subgraph of 20 lowest edge weight")
+        #print(stats)
+        
+        lowwlist, stats = resultssubgraph(SG_lowweight,nsteps,"Subgraph lowest edge weights",simulationnumber)
+        print("Subgraph of 20 largest degree centrality nodes")
+        #print(stats)
+        top20list, stats = resultssubgraph(SG_top20DC,nsteps,"Subgraph 20 largest degree centrality nodes",simulationnumber)
+        print("Subgraph of 20 lowest degree centrality nodes")
+        #print(stats)
+        low20list, stats = resultssubgraph(SG_low20DC,nsteps,"Subgraph 20 lowest degree centrality nodes",simulationnumber)
+        print("Minimum Spanning Tree")
+        minspanlist, stats = resultssubgraph(minspan,nsteps,"Minimum Spanning Tree",simulationnumber)
+        #print(stats)
 
 
         
@@ -485,14 +503,14 @@ def testingPrint(simulationnumber,graphtype): #range of tests for each simulatio
     print("Max Betweenness Centrality Source Node")
     Gmaxb, init, matrix_maxbc,pinf_all_step,pdead_all_step = run(air_graph, maxkeybc)
     plotting(matrix_maxbc, nsteps, "Max Betweeness Centrality Source Node",simulationnumber)
-    print(stat(Gmaxb,init))
-    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
+    #print(stat(Gmaxb,init))
+    #print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
 
     print("Min Betweenness Centrality Source Node")
     Gminb, init, matrix_minbc ,pinf_all_step,pdead_all_step = run(air_graph, minkeybc)
     plotting(matrix_minbc, nsteps, "Min Betweeness Centrality Source Node",simulationnumber)
-    print(stat(Gminb,init))
-    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
+    #print(stat(Gminb,init))
+    #print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
 
     
     print("---")
@@ -504,14 +522,14 @@ def testingPrint(simulationnumber,graphtype): #range of tests for each simulatio
     print("Max Degree Centrality Source Node")
     Gmaxdeg, init, matrix_maxdegc,pinf_all_step,pdead_all_step = run(air_graph, maxkeydegc)
     plotting(matrix_maxdegc, nsteps, "Max Degree Centrality Source Node",simulationnumber)
-    print(stat(Gmaxdeg,init))
-    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
+    #print(stat(Gmaxdeg,init))
+    #print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
     
     print("Min Degree Centrality Source Node")
     Gmindeg, init, matrix_mindegc ,pinf_all_step,pdead_all_step= run(air_graph, minkeydegc)
     plotting(matrix_mindegc, nsteps, "Min Degree Centrality Source Node",simulationnumber)
-    print(stat(Gmindeg,init))
-    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step," Diameter = ",nx.diameter(air_graph))
+    #print(stat(Gmindeg,init))
+    #print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step," Diameter = ",nx.diameter(air_graph))
     
     print("---")
     
@@ -519,13 +537,14 @@ def testingPrint(simulationnumber,graphtype): #range of tests for each simulatio
     center = nx.center(air_graph)
     Gcenter, init, matrix_center ,pinf_all_step,pdead_all_step= run(air_graph, center[0])
     plotting(matrix_center, nsteps, "Initial Node: Center of Graph",simulationnumber)
-    print(stat(Gcenter,init))
-    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph)," Length = ",len(air_graph))  
+    #print(stat(Gcenter,init))
+    #print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph)," Length = ",len(air_graph))  
 #    
 #    
 
 
 def plotting(matrix, nsteps, sim_str, simulationnumber): #plot percentage of nodes in eahc state over time
+    
     if simulationnumber == 'sim1':
         plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
         plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
@@ -533,11 +552,6 @@ def plotting(matrix, nsteps, sim_str, simulationnumber): #plot percentage of nod
         plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
         plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
         plt.plot([i for i in range(len(matrix))],[matrix[i][3] for i in range(len(matrix))],'--ro',label = '% Closed/Dead')
-    elif simulationnumber == 'sim3':  
-        plt.plot([i for i in range(len(matrix))],[matrix[i][0] for i in range(len(matrix))],'--go',label = '% Susceptible')
-        plt.plot([i for i in range(len(matrix))],[matrix[i][1] for i in range(len(matrix))],'--y^',label = '% Infected')
-        plt.plot([i for i in range(len(matrix))],[matrix[i][3] for i in range(len(matrix))],'--ro',label = '% Closed/Dead')
-        #plt.plot([i for i in range(len(matrix))],[matrix[i][2] for i in range(len(matrix))],'--bs',label = '% Recovered')
     plt.title(str(sim_str))
     plt.xlabel('Time Step')
     plt.ylabel('%')
@@ -553,11 +567,13 @@ def plotting(matrix, nsteps, sim_str, simulationnumber): #plot percentage of nod
 if __name__ == "__main__":
     
     "Overall Parameters"
-    n =1000 # number of nodes
+    n =250 # number of nodes
     pn = 0.01 # per-edge probability of existing
     i = 1 # number of nodes initially infected
-    nsteps = 50 # how many time-steps to run
+    nsteps = 25 # how many time-steps to run
     large_airports = 50 # picking the initial edpidemic spreading airport to have degree greater than n
+    simulation_type = 'sim2' # sim1      # sim1- nodes are infected but don't die. sim2 - infected nodes can die 
+    graph_type = 'real' #'generated' # 'real'    # graph used for simulation 
     
     "Create Real World Graph"
     nodes = 'sub_us_airports.csv' 
@@ -570,54 +586,16 @@ if __name__ == "__main__":
     Gsub = Greal.subgraph(to_keep)
     Greal = normalize_edge_weight(Gsub)
     
-    """Simulation 1 - Airports cannot die"""
-    
-    print("Simulation 1 - Airports cannot die ")
-    
-    p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
-    rp = 0 # probability of recovery 
-    td = math.inf # td time-steps after infection, the individual dies
-    
-#    testingPrint('sim1','real')
-#    testingPrint('sim1','generated')
+    if simulation_type == 'sim1' :
+        
+        p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
+        rp = 0 # probability of recovery 
+        td = math.inf # td time-steps after infection, the individual dies
+    elif simulation_type == 'sim2' : 
+        p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
+        rp = 0 # probability of recovery 
+        td = 4 # td time-steps after infection, the individual dies
 
-    "Simulation 2 - Airports can die/close"
-    
-    p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
-    rp = 0 # probability of recovery 
-    td = 4 # td time-steps after infection, the individual dies
+    #call the simulation funtion
+    Simulate(simulation_type,graph_type)
 
-#    testingPrint('sim2','real')
-    testingPrint('sim2','generated')
-
-
-#    "Simulation 3 - Airports can die and recover"
-#    p = 0.4 # probability of acquiring infection from a single neighbour, per time-step
-#    rp = 0.2 # probability of recovery 
-#    td = 4 # td time-steps after infection, the individual dies
-
-#    testingPrint('sim3')
-    
-
-   
-
-
-#    print(short_path_test(G_er, init_er))
-#    
-#    print("----------")
-#    print("Real World Graph")
-#    nodes = 'sub_us_airports.csv' 
-#    edges = 'edges.txt'
-#    Greal = real_world_airport_graph(nodes, edges)
-#    #remove nodes which have degree zero OR Keep nodes with degree > 0
-#    deg = Greal.degree()
-#    #to_remove = [n for n in deg if deg[n] == 0]
-#    to_keep = [n for n in deg if deg[n] != 0]
-#    Gsub= Greal.subgraph(to_keep)
-#    Greal= normalize_edge_weight(Gsub)
-#    
-#    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp, av_shortest_path = graph_properties(Greal)
-#    print(graph_properties(Greal))
-#
-#    G_real, init_real,pinf_all_step,pdead_all_step = run(Greal,"node_deg") 
-#    print(short_path_test(G_real, init_real))
