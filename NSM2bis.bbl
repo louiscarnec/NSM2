@@ -1,0 +1,26 @@
+\begin{thebibliography}{1}
+
+\bibitem{jones2008global}
+{\sc Jones, K.~E., Patel, N.~G., Levy, M.~A., Storeygard, A., Balk, D.,
+  Gittleman, J.~L., and Daszak, P.}
+\newblock Global trends in emerging infectious diseases.
+\newblock {\em Nature 451}, 7181 (2008), 990--993.
+
+\bibitem{lawyer2016measuring}
+{\sc Lawyer, G.}
+\newblock Measuring the potential of individual airports for pandemic spread
+  over the world airline network.
+\newblock {\em BMC infectious diseases 16}, 1 (2016), 70.
+
+\bibitem{tatem2006global}
+{\sc Tatem, A.~J., Rogers, D.~J., and Hay, S.}
+\newblock Global transport networks and infectious disease spread.
+\newblock {\em Advances in parasitology 62\/} (2006), 293--343.
+
+\bibitem{nicholasyager2014}
+{\sc Yager, N.~A., and Taylor, M.}
+\newblock Edge-based control of disease propagation through the world-wide
+  airport network.
+\newblock {https://github.com/nicholasyager/airport-disease-modeling}, 2014.
+
+\end{thebibliography}

@@ -1,0 +1,7 @@
+\BOOKMARK [1][-]{section.1}{Read world phenomenon : Spread of disease through airports network}{}% 1
+\BOOKMARK [1][-]{section.2}{Describe briefly your choice of graph model and how it corresponds to the real-world phenomenon, e.g. your choice of directed versus undirected edges, edge weights, allowing or disallowing self-loops, etc.}{}% 2
+\BOOKMARK [1][-]{section.3}{With the aid of a diagram, describe the simulation rules, e.g. how agents change state and what causes them to send messages.}{}% 3
+\BOOKMARK [1][-]{section.4}{Program your simulation in Python.}{}% 4
+\BOOKMARK [1][-]{section.5}{State one or more simulation properties which you wish to investigate and which graph properties you hypothesize they may depend on.}{}% 5
+\BOOKMARK [1][-]{section.6}{Carry out experiments to measure these properties in different types and sizes of graph \(at least one real-world graph, and at least one scalable graph model such as the Erdos-Renyi random graph model, at multiple sizes\). Present a table of data showing your results.}{}% 6
+\BOOKMARK [1][-]{section.7}{State your conclusions, based on your data.}{}% 7
