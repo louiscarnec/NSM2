@@ -102,7 +102,10 @@ def run(G,simulation): #run simulation
 #    print("Airport closeness centrality: ", nx.closeness_centrality(G,init))
 #    print("Airport clustering: ", nx.clustering(G,init))
 #    print("Airport eccentricity: ", nx.eccentricity(G,init))
-
+    pinf_all_step = math.inf
+    pdead_all_step = math.inf
+    pinf_all_step_check =0
+    pdead_all_step_check=0
     w = nsteps #creating a matrix with % of infected, susceptible, recovered to plot 
     h = 4
     stats_matrix = [[0 for x in range(h)] for y in range(w)] 
@@ -121,14 +124,21 @@ def run(G,simulation): #run simulation
         stats_matrix[i][1] = pinf
         stats_matrix[i][2] = prec
         stats_matrix[i][3] = pdead
-
-    viz(G,pos) #Visualise graph at each time step
+        
+        if (pinf ==1 and pinf_all_step_check ==0 ):
+            pinf_all_step = i
+            pinf_all_step_check =1
+        if (pdead ==1 and pdead_all_step_check ==0 ):
+            pdead_all_step = i
+            pdead_all_step_check = 1
+            
+    #viz(G,pos) #Visualise graph at each time step
         
         
      
 #    stats(G,init)
     
-    return G, init, stats_matrix
+    return G, init, stats_matrix,pinf_all_step,pdead_all_step
     
 def viz(G,pos):   #Function to visualise graph at each time step
     node_colors = []
@@ -319,7 +329,7 @@ def gDiameterTest(n,nsteps,simulationnumber): #test a range of erdos_renyi graph
         except nx.NetworkXError:
             diameter = math.inf
             
-        G, init, matrix = run(G,'random')
+        G, init, matrix,pinf_all_step,pdead_all_step = run(G,'random')
         
         for nstep in range(nsteps):
             if matrix[nstep][1] == 1.0:
@@ -344,12 +354,12 @@ def gDiameterTest(n,nsteps,simulationnumber): #test a range of erdos_renyi graph
         diameterList[3].append(timerec)
         diameterList[4].append(timedead)
         
-        plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac),simulationnumber)
-        
+        #plotting(matrix, nsteps, "Erdos-Renyi with pn" + str(frac),simulationnumber)
+        #print("properties:",properties)
         statlist.append(i)
         statlist.append(stat(G,init).items())
 
-    return diameterList, stats_matrix,G
+    return diameterList, stats_matrix,G,pinf_all_step,pdead_all_step
     
 def subgraph(G,nsteps): #Groduce subgraphs
     
@@ -392,7 +402,7 @@ def resultssubgraph(G,nsteps,sim_str,simulationnumber): #return statistics for s
     except nx.NetworkXError:
         diameter = math.inf
        
-    G, init, matrix = run(G,'random')
+    G, init, matrix,pinf_all_step,pdead_all_step = run(G,'random')
         
     for nstep in range(nsteps):
         if matrix[nstep][1] == 1.0:
@@ -426,19 +436,23 @@ def testingPrint(simulationnumber,graphtype): #range of tests for each simulatio
 #    print("---")
 #
     print("Testing on graphs with increasing probability of edge existence between nodes" )    
-    Diameter_test_data, graphproperties, ERG = gDiameterTest(n,nsteps,simulationnumber)
-    
+    Diameter_test_data, graphproperties, ERG,pinf_all_step,pdead_all_step = gDiameterTest(n,nsteps,simulationnumber)
+
     if graphtype == 'generated' :
         air_graph = ERG
     else :
-        air_graph = Greal
+        air_graph = Greal    
+    
+    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
+    
+
 #    print(graphproperties)
 #    print(Diameter_test_data)
 #    print(stats)
 #    
 #    print("---")
 #    print("Testing on real-world Airport Graph")
-#    G, init, matrix = run(air_graph,'random')
+#    G, init, matrix ,pinf_all_step,pdead_all_step = run(air_graph,'random')
 #    stat(G,init)
 #    
 #    print("Testing on subgraphs of the real-world airport graph")
@@ -469,14 +483,16 @@ def testingPrint(simulationnumber,graphtype): #range of tests for each simulatio
     maxkeybc, maxvalbc = max_btcentrality(air_graph)
     minkeybc, minvalbc = min_btcentrality(air_graph)
     print("Max Betweenness Centrality Source Node")
-    Gmaxb, init, matrix_maxbc = run(air_graph, maxkeybc)
+    Gmaxb, init, matrix_maxbc,pinf_all_step,pdead_all_step = run(air_graph, maxkeybc)
     plotting(matrix_maxbc, nsteps, "Max Betweeness Centrality Source Node",simulationnumber)
     print(stat(Gmaxb,init))
+    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
 
     print("Min Betweenness Centrality Source Node")
-    Gminb, init, matrix_minbc = run(air_graph, minkeybc)
+    Gminb, init, matrix_minbc ,pinf_all_step,pdead_all_step = run(air_graph, minkeybc)
     plotting(matrix_minbc, nsteps, "Min Betweeness Centrality Source Node",simulationnumber)
     print(stat(Gminb,init))
+    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
 
     
     print("---")
@@ -486,24 +502,25 @@ def testingPrint(simulationnumber,graphtype): #range of tests for each simulatio
     minkeydegc, minvaldegc = min_degcentrality(air_graph)
     
     print("Max Degree Centrality Source Node")
-    Gmaxdeg, init, matrix_maxdegc = run(air_graph, maxkeydegc)
+    Gmaxdeg, init, matrix_maxdegc,pinf_all_step,pdead_all_step = run(air_graph, maxkeydegc)
     plotting(matrix_maxdegc, nsteps, "Max Degree Centrality Source Node",simulationnumber)
     print(stat(Gmaxdeg,init))
-
+    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph))
+    
     print("Min Degree Centrality Source Node")
-    Gmindeg, init, matrix_mindegc = run(air_graph, minkeydegc)
+    Gmindeg, init, matrix_mindegc ,pinf_all_step,pdead_all_step= run(air_graph, minkeydegc)
     plotting(matrix_mindegc, nsteps, "Min Degree Centrality Source Node",simulationnumber)
     print(stat(Gmindeg,init))
-
+    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step," Diameter = ",nx.diameter(air_graph))
     
     print("---")
     
     print("Test using center of graph")
     center = nx.center(air_graph)
-    Gcenter, init, matrix_center = run(air_graph, center[0])
+    Gcenter, init, matrix_center ,pinf_all_step,pdead_all_step= run(air_graph, center[0])
     plotting(matrix_center, nsteps, "Initial Node: Center of Graph",simulationnumber)
     print(stat(Gcenter,init))
-#        
+    print("pinf_all_step = ",pinf_all_step," pdead_all_step = ",pdead_all_step, " Diameter = ",nx.diameter(air_graph)," Length = ",len(air_graph))  
 #    
 #    
 
@@ -536,10 +553,10 @@ def plotting(matrix, nsteps, sim_str, simulationnumber): #plot percentage of nod
 if __name__ == "__main__":
     
     "Overall Parameters"
-    n = 143 # number of nodes
-    pn = 0.04 # per-edge probability of existing
+    n =1000 # number of nodes
+    pn = 0.01 # per-edge probability of existing
     i = 1 # number of nodes initially infected
-    nsteps = 25 # how many time-steps to run
+    nsteps = 50 # how many time-steps to run
     large_airports = 50 # picking the initial edpidemic spreading airport to have degree greater than n
     
     "Create Real World Graph"
@@ -602,5 +619,5 @@ if __name__ == "__main__":
 #    order, size, density, cluster_coeff, diameter, num_nodes_deg_n, largest_comp, av_shortest_path = graph_properties(Greal)
 #    print(graph_properties(Greal))
 #
-#    G_real, init_real = run(Greal,"node_deg") 
+#    G_real, init_real,pinf_all_step,pdead_all_step = run(Greal,"node_deg") 
 #    print(short_path_test(G_real, init_real))
