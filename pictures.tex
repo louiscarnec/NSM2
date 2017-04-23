@@ -13,9 +13,9 @@
 
 
 \begin{document}
-\section*{Simulation 1}
+\section*{Simulation 1 - Nodes Cannot Die}
 
-\subsection*{Graphs, subgraph and Edge Probability - Diameter}
+\subsection*{Testing Diameter: Graphs, Subgraphs and Edge Probability}
 
 \subsubsection*{Erdos-Renyi Graphs}
 
@@ -64,7 +64,7 @@ index & pn & order & size & density & cluster coefficient &diameter & nodes deg 
 \caption{Simulation 1 Erdos Renyi : Plotting Node States for Graphs for pn = 0.01, 0.03, 0.05, 0.09}
 \end{figure}
 
-\subsubsection*{Real Airport Graph and subgraphs}
+\subsubsection*{Real Airport Graph and Subgraphs}
 
 \begin{table}[H]
 \centering
@@ -191,21 +191,6 @@ Min Span. Tree & 143& 142& 0.013986013986013986& 0.0& 8& 3& 143\\ \hline
 %
 %Begin: Sim1 - Real 
 
-\begin{figure}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{11InitialNode_Center_of_graph_1.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{11InitialNode_Center_of_graph_2.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{Simulation 1 Real : Initial Node Center Of Graphe}
-\end{figure}
-
 
 \begin{figure}[H]
 \centering
@@ -330,7 +315,7 @@ index & pn & order & size & density & cluster coefficient &diameter & nodes deg 
 \\
 \hline
 \end{tabular}
-\caption{Simulation 2 Erdos Renyi : Plotting Node States for Graphs for pn = 0.1, 0.3, 0.5, 0.9}
+\caption{Simulation 2: Real-World Subgraphs}
 \end{figure}
 
 
@@ -403,67 +388,38 @@ index & pn & order & size & density & cluster coefficient &diameter & nodes deg 
 \subsubsection*{Real World Airports Graph}
 %Begin: Sim2 - Real 
 
+\begin{center}
+\includegraphics[scale=0.8]{InitialNode_Center_of_graph_2.png}
 \begin{figure}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{InitialNode_Center_of_graph_1.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{InitialNode_Center_of_graph_2.png}}
-     {}
-\\
-\hline
-\end{tabular}
-\caption{Simulation 2 Real : Initial Node Center Of Graph}
+\caption{Simulation 2 Real-world :  airport graph properties}
 \end{figure}
-
+\end{center}
 
 
 \begin{figure}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
-\subf{\includegraphics[width=60mm]{MinDegree_Centrality_source_node_1.png}}
-     {}
-&
 \subf{\includegraphics[width=60mm]{MinDegree_Centrality_source_node_2.png}}
-     {}
-\\
-\hline
-\subf{\includegraphics[width=60mm]{MaxDegree_Centrality_source_node_1.png}}
      {}
 &
 \subf{\includegraphics[width=60mm]{MaxDegree_Centrality_source_node_2.png}}
      {}
 \\
 \hline
-\end{tabular}
-\caption{Simulation 2 Real : Max and Min Degree Centrality SourceNode}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\subf{\includegraphics[width=60mm]{MaxBetweeness_centrality_sourcenode_1.png}}
+\subf{\includegraphics[width=60mm]{MinBetweeness_centrality_sourcenode_2.png}}
      {}
 &
 \subf{\includegraphics[width=60mm]{MaxBetweeness_centrality_sourcenode_2.png}}
      {}
 \\
 \hline
-\subf{\includegraphics[width=60mm]{MinBetweeness_centrality_sourcenode_1.png}}
-     {}
-&
-\subf{\includegraphics[width=60mm]{MinBetweeness_centrality_sourcenode_2.png}}
-     {}
-\\
-\hline
 \end{tabular}
-\caption{Simulation 2 Real : Max and Min Betweenness Centrality SourceNode}
+\caption{Simulation 2 Real : Max and Min Degree and Betweenness Centrality SourceNode}
 \end{figure}
+
+
+
 
 %End: Sim2 - Real 
 

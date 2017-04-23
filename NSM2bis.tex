@@ -5,6 +5,7 @@
 \usepackage{fancyhdr}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{enumerate}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usepackage{url}
@@ -112,13 +113,13 @@ The world is more closely connected than ever before by modern transportation ne
 
 In this simulation we will model the spread of disease through the US airport network. It is inspired by the work of Yager and Taylor \cite{nicholasyager2014} which model the spread of pathogens through airports around the world using a directed graph. We will extend their work by testing how graphs (subgraphs of the US networks graph with specific properties and Erdos-Renyi graphs with different edge existence probabilities) and initial infection nodes (with different centrality measures) affect the spread of disease through the network.
 
-\section{Describe briefly your choice of graph model and how it corresponds to the real-world phenomenon, e.g. your choice of directed versus undirected edges, edge weights, allowing or disallowing self-loops, etc.}
+\section{US Airport Network Model}
 
 Our real-world network graph is undirected where nodes represent airports and edges are routes. We used open source data from \url{http://openflights.org}along with population of US cities from \url{https://unstats.un.org/unsd/demographic/products/dyb/City_Page.htm}. Redundant edges and unconnected nodes were removed from the graph. Edge weights were calculates by getting the average population of the two cities connected by edges and normalising for all edges. In creating the graph, only edges connecting airports with the US were added.
 The graph created deviates from the real world epidemic scenario. Firstly, exclusively flights within the US are considered. In reality, disease spread through air transport is a world wide phenomenon. In a world wide scenario, we could expect the spread of disease across US nodes to be even quicker as more edges would connect US airport hubs. Secondly, the graph is undirected, this is due to the fact that there is no data for passenger numbers on specific routes. We assume that passenger on routes is proportional to the population of the city which is served by an airport. It is also assumed that routes are bidirectional, to simplify.
 
 
-\section{With the aid of a diagram, describe the simulation rules, e.g. how agents change state and what causes them to send messages.}
+\section{Simulation Rules}
 
 The states of each node/airport are either; susceptible to infection (green), infected (yellow) or dead/closed down (red). All nodes are initially disease free and thus susceptible to infection except from a node which is infected at the beginning, step 0. Once a node is infected, it can infect any of its neighbours with probability related to the edge weight connecting it to its neighbours. In the case where the airport can close down or dies (these terms will be used interchangeably), if the airport has closed down it cannot spread anymore disease, there are no outgoing flights. 
 
@@ -223,17 +224,71 @@ When a node is dead, it cannot further spread the disease. Therefore, if for exa
 
 \caption{Spread of Infection Simulation Rules} \label{fig:M2}
 \end{figure}
-\section{Program your simulation in Python.}
 
-\section{State one or more simulation properties which you wish to investigate and which graph properties you hypothesise they may depend on.}
+\section{Simulation and Graph Properties}
 
 \subsection*{Simulation Properties}
 We will investigate two main simulation properties; with and without airports being able to close or nodes dying. The hypothesis is that the spread of the disease throughout the network will be slowed down by airport closing as, at each time-step, they cannot spread the disease to neighbours once closed down. \\
-Each simulation depends on the probability of being infected at a given timestep ($p_{infection}$) and the time after infection at which the node dies. In both cases $p_{infection} = 0.4$ is multiplied with the edge weight, this gives the 
+Each simulation depends on the probability of being infected at a given timestep ($p_{infection}$) and the time after infection at which the node dies. In both cases $p_{infection} = 0.4$ for simplicity, that is the probability an infected node will infect a neighbour is 0.4, if the edge weight is 1.0. The second simulation, where airports can close, also depends on the time after infection when the airport closes (set in the initial simulation to 4 time steps). We would expect both parameters to have an effect on the spread of disease. The greater the probability of infection, the faster the spread. The longer it takes for the airport to close, the faster the rate of infection. And vice versa. 
+
+\subsection*{Graph Properties}
+We hypothesise that the simulations will depend on:
+
+\begin{itemize}
+\item Diameter: the largest distance between any two nodes in the graph. The greater the diameter, the longer it should take for the disease to infect the whole graph.
+\item Centrality of initial node. The more central an airport/node the faster the disease should spread to other nodes in the network. We will investigate degree centrality and betweenness centrality.
+\end{itemize}
+
+\section{Experiments}
+
+The experiments were conducted using 25 time steps, as a result some simulations did not run until the whole graph was infected. Due to the large number of results produced by the experiments, a subset will be presented here.
+
+\subsection*{Testing Diameter Hypothesis}
+Both simulations were tested on the airport network and its subgraphs and a range of Erdos-Renyi random graphs for different sizes and probabilities of edge existence. The full US airport graph as a diameter of 4, that is any two airports within the graph have at most 2 airports between them. Subgraphs of the US airport graph are investigated; a subgraph with edge weights $> 0.75$(diameter is infinite, graph not connected), subgraph with edge weights $<0.5$ (diameter = 3), subgraph of 20 largest degree centrality nodes (diameter = 2), and the minimum spanning tree of the airport graph (diameter = 8).\\
+Erdos-Renyi graphs' diameter depends on the choice of $n$ (the order of the graph) and $pn$ (probability of an edge existing).
+
+\begin{table}[H]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|}
+\hline
+Graph                     & Diameter \\ \hline
+\hline
+Airport                   & 4        \\ \hline
+weights \textgreater 0.75 & inf      \\ \hline
+weights\textless0.5       & 3        \\ \hline
+High Deg. Cent.           & 3        \\ \hline
+Low Deg. Cent.            & 2        \\ \hline
+Min. Span. Tree           & 8        \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Testing Node Centrality}
+Tests were also conducted using specific nodes for initial infection based on centrality. The nodes with highest and lowest betweenness and degree centrality, as well as the centre node were infected at time 0 to test their effect on both the real world and Erdos-Renyi graphs.
+
+\section{Results}
+
+\subsection*{Diameter}
+\subsubsection*{Airports Graphs and Subgraphs}
+The spread of the disease through the graphs differs greatly as we expected depending on the graph we are testing on for both simulations 1 and 2 (see Figures 4,5,12,13). 
+In simulation 1, the disease spreads quickly, by the $5^{th}$ timestep, 90\% of the graph is infected but the rate of spread greatly levels out thereafter. Comparing large and low edge weight graphs, the spread for the large edge weight graph is slow whereas it is fast in the low edge weight case. The disease does not spread to the whole graph in the 25 steps of the run but levels out. This has to do with the fact that the whole graph is not connected (diameter = inf). With the 20 largest degree centrality node subgraph, the spread is much quicker than in all other graphs, the disease has spread to the graph in 3 time steps. The minimum spanning tree is slow to spread, it takes some time before the disease reaches a high centrality node, at which point the disease spreading rate increases.\\
+Although interesting, these results do not tell much about the effect of graph diameter on disease spread, results are confused with the properties of nodes which make up the subgraphs.
+
+\subsubsection*{Erdos-Renyi}
+
+\subsection*{Node Centrality}
+
+\subsubsection*{Degree Centrality}
+
+\subsubsection*{Betweenness Centrality}
 
 
+\section{Conclusions}
 
+\section{Appendix}
 
+\input{pictures.tex}
 
 
 
